@@ -7,10 +7,10 @@ from datetime import datetime
 import time
 
 # My keys and tokens
-consumer_key = 'XMmsyU6HRJ2PCXVulgjrM4WrX'
-consumer_secret = 'PEMlBYaGi9FKuCgRdodXHboeEAtGSQgajYm8leuN8P4hVb32jJ'
-access_token = '1512011770017513476-mTa2DmJ4VKTDT9T6LM4KoP4M5WEsnT'
-access_token_secret = 'W9BXmEmkZgn9BkHy3bNGvRG2tMojFeH4BId4OzMOsm56o'
+consumer_key = 'RxQZwmI6L7y9UfP2SIKAUrwYf'
+consumer_secret = 'CrFHPYuzs6zE2K39p6tuuzCQmcwHTgmdBg4OJsQkdKz0tS9WCV'
+access_token = '966805471507005440-PGgHxlDUi2Pse71xfAiC0a8LMa6KRIM'
+access_token_secret = 'royjCjA4mv172YIQlgiPEEOHWtB7AvN43uXzG7SNcv5tP'
 
 access = {"consumer_key": consumer_key,
           "consumer_secret": consumer_secret,
@@ -63,8 +63,10 @@ def dealStream(tweetJson, dataDict):
         else:
             dataDict["geo"] = []
 
-        if tweetJson["place"]["bounding_box"] != None:
+        if tweetJson["place"] != None and tweetJson["place"]["bounding_box"] != None:
             dataDict["bounding_box"] = tweetJson["place"]["bounding_box"]["coordinates"]
+        else:
+            dataDict["bounding_box"] = []
 
         newJson = js.dumps(dataDict)
         return newJson
@@ -75,8 +77,8 @@ def dealStream(tweetJson, dataDict):
 
         print(e)
         print("Cannot upload a well-formatted tweet to couchDB")
-        file.write(str(e) + "\n")
-        file.write("Cannot upload a well-formatted tweet to couchDB\n")
+        file.write(str(dataDict))
+        #file.write("Cannot upload a well-formatted tweet to couchDB\n")
         time.sleep(30)
 
 
@@ -93,7 +95,7 @@ file = open(args.filename, "w")
 # This is a basic listener that just prints received tweets to stdout.
 class TweetListener(Stream):
     twe = []
-    limit = 3
+    limit = 1000
 
     def on_data(self, data):
         dataDict = {}
@@ -107,10 +109,9 @@ class TweetListener(Stream):
         if not tweetJson["text"].startswith('RT') and tweetJson["retweeted"] == False:
             # file.write(data.decode(encoding='UTF-8'))
             file.write(str(new_json))
+            file.write("\n")
             if tweetJson["place"] == None:
-                file.write("\nNO location information\n")
-            else:
-                file.write("\n")
+                print("\nNO location information")
 
         return True
 
@@ -128,7 +129,7 @@ if __name__ == '__main__':
                              access['access_secret'])
 
     # This line filter Twitter Streams to capture data around Victoria state
-    listener.filter(locations=args.list, track=["melourne"], languages=['en'])
+    listener.filter(locations=args.list, track=["melbourne"], languages=['en'])
 
     file.close()
 
