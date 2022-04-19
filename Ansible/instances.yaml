@@ -7,4 +7,4 @@
     - role: common
     - role: create-volume
     - role: security-group
-    - role: create-instance
+    - role: instances

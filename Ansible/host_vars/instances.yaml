@@ -6,13 +6,13 @@ instance_network: qh2-uom-internal
 
 volumes:
   - vol_name: volume1
-    vol_size: 100
+    vol_size: 50
   - vol_name: volume2
-    vol_size: 100
+    vol_size: 50
   - vol_name: volume3
-    vol_size: 100
+    vol_size: 50
   - vol_name: volume4
-    vol_size: 100
+    vol_size: 50
 
 security_groups:
   - name: group8_ssh
@@ -30,14 +30,10 @@ security_groups:
 
 instances:
   - name: server1
-    security_groups: ['group8_ssh', 'group8_http']
     volumes: ["volume1"]
   - name: server2
-    security_groups: ['group8_ssh', 'group8_http']
     volumes: ["volume2"]
   - name: server3
-    security_groups: ['group8_ssh', 'group8_http']
     volumes: ["volume3"]
   - name: server4
-    security_groups: ['group8_ssh', 'group8_http']
     volumes: ["volume4"]
