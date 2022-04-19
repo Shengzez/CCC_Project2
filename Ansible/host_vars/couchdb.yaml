@@ -1,9 +1,7 @@
-image_name: 'ibmcom/couchdb3:3.2.1'
-container_name: 'couchdb-container'
+image_name: "ibmcom/couchdb3:3.2.1"
+container_name: "couchdb-container"
 user: admin
-passward: 'group8'
-nodes_count:3
-port:5984
-cookie: 'a192aeb9904e6590849337933b000c99'
-
-
+passward: "group8"
+nodes_count: 3
+port: 5984
+cookie: "a192aeb9904e6590849337933b000c99"
