@@ -1,0 +1,43 @@
+availability_zone: melbourne-qh2-uom
+instance_image: 356ff1ed-5960-4ac2-96a1-0c0198e6a999
+instance_key_name: group8
+instance_flavor: uom.mse.2c9g
+instance_network: qh2-uom-internal
+
+volumes:
+  - vol_name: volume1
+    vol_size: 100
+  - vol_name: volume2
+    vol_size: 100
+  - vol_name: volume3
+    vol_size: 100
+  - vol_name: volume4
+    vol_size: 100
+
+security_groups:
+  - name: group8_ssh
+    description: "Security group for SSH access"
+    protocol: tcp
+    port_range_min: 1
+    port_range_max: 65535
+    remote_ip_prefix: 0.0.0.0/0
+  - name: group8_http
+    description: "Security group for HTTP"
+    protocol: tcp
+    port_range_min: 1
+    port_range_max: 65535
+    remote_ip_prefix: 0.0.0.0/0
+
+instances:
+  - name: server1
+    security_groups: ['group8_ssh', 'group8_http']
+    volumes: ["volume1"]
+  - name: server2
+    security_groups: ['group8_ssh', 'group8_http']
+    volumes: ["volume2"]
+  - name: server3
+    security_groups: ['group8_ssh', 'group8_http']
+    volumes: ["volume3"]
+  - name: server4
+    security_groups: ['group8_ssh', 'group8_http']
+    volumes: ["volume4"]

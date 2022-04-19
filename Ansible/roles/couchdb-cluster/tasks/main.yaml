@@ -1,0 +1,41 @@
+- name: couchdb cluster setup one
+  become: yes
+  uri:
+    url: http://{{ masternode }}:{{port}}/_cluster_setup
+    method: POST
+    user: "{{ user }}"
+    password:  "{{ password }}"
+    body_format: json
+    body: "{\"action\": \"enable_cluster\", \"bind_address\":\"0.0.0.0\",\
+             \"username\": \"{{ user }}\", \"password\":\"{{ password }}\", \"port\": \"{{ port }}\",\
+             \"remote_node\": \"{{ item }}\", \"node_count\": \"{{      }}\",\
+             \"remote_current_user\":\"{{ user }}\", \"remote_current_password\":\"{{ password }}\"}"
+    headers:
+      Content-Type: "application/json"
+  loop: "{{ othernodes }}"
+
+- name: couchdb cluster setup two
+  become: yes
+  uri:
+    url: http://{{ masternode }}:{{port}}/_cluster_setup
+    method: POST
+    user: "{{ user }}"
+    password:  "{{ password }}"
+    body_format: json
+    body: "{\"action\": \"add_node\", \"host\":\"{{ item }}\",\
+             \"port\": \"{{ port }}\", \"username\": \"{{ user }}\", \"password\":\"{{ password }}\"}"
+    headers:
+      Content-Type: "application/json"
+  loop: "{{ othernodes }}"
+
+- name: couchdb cluster setup finish
+  become: yes
+  uri:
+    url: http://{{ user }}:{{ password }}@{{ masternode }}:{{ port }}/{{ cluster_name }}
+    method: POST
+    user: "{{ user }}"
+    password: "{{ password }}"
+    body_format: json
+    body: "{\"action\": \"finish_cluster\"}"
+    headers:
+      Content-Type: "application/json"
