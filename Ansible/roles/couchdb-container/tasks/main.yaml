@@ -1,4 +1,4 @@
-- name: Start a couchdb-container container
+- name: Start a couchdb container
   become: yes
   docker_container:
     name: "{{ container_name }}"

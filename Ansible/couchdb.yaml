@@ -1,0 +1,13 @@
+- hosts: couchdbnodes
+  vars_files:
+    - host_vars/couchdb.yaml
+  gather_facts: true
+  roles:
+    - role: couchdb-container
+
+- hosts: couchdbmasternode
+  vars_files:
+    - host_vars/couchdb.yaml
+  gather_facts: true
+  roles:
+    - role: couchdb-cluster
