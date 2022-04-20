@@ -1,6 +1,6 @@
 availability_zone: melbourne-qh2-uom
 instance_image: 356ff1ed-5960-4ac2-96a1-0c0198e6a999
-instance_key_name: group8
+instance_key_name: group-8
 instance_flavor: uom.mse.2c9g
 instance_network: qh2-uom-internal
 
@@ -13,27 +13,41 @@ volumes:
     vol_size: 50
   - vol_name: volume4
     vol_size: 50
+  - vol_name: volume5
+    vol_size: 30
+  - vol_name: volume6
+    vol_size: 30
+  - vol_name: volume7
+    vol_size: 30
+  - vol_name: volume8
+    vol_size: 30
 
 security_groups:
   - name: group8_ssh
     description: "Security group for SSH access"
     protocol: tcp
-    port_range_min: 1
-    port_range_max: 65535
+    port_range_min: 22
+    port_range_max: 22
     remote_ip_prefix: 0.0.0.0/0
   - name: group8_http
     description: "Security group for HTTP"
     protocol: tcp
-    port_range_min: 1
-    port_range_max: 65535
+    port_range_min: 80
+    port_range_max: 80
+    remote_ip_prefix: 0.0.0.0/0
+  - name: couchdb
+    description: "Security group for couchdb"
+    protocol: tcp
+    port_range_min: 5984
+    port_range_max: 5984
     remote_ip_prefix: 0.0.0.0/0
 
 instances:
   - name: server1
-    volumes: ["volume1"]
+    volumes: ["volume1", "volume5"]
   - name: server2
-    volumes: ["volume2"]
+    volumes: ["volume2", "volume6"]
   - name: server3
-    volumes: ["volume3"]
+    volumes: ["volume3", "volume7"]
   - name: server4
-    volumes: ["volume4"]
+    volumes: ["volume4", "volume8"]

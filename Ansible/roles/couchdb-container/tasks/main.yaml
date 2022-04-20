@@ -3,12 +3,7 @@
   docker_container:
     name: "{{ container_name }}"
     image: "{{ image_name }}"
-    ports:
-      - "5984:5984"
-      - "5986:5986"
-      - "4369:4369"
     env:
       COUCHDB_USER: "{{ user }}"
       COUCHDB_PASSWORD: "{{ password }}"
       COUCHDB_SECRET: "{{ cookie }}"
-
