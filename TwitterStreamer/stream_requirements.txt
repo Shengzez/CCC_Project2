@@ -1,0 +1,11 @@
+requests
+tweepy
+argparse
+datetime
+nltk
+couchdb
+re
+matplotlib
+numpy
+pandas
+textblob
