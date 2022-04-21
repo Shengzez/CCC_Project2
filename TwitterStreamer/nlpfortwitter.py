@@ -29,24 +29,53 @@ def preprocessing(tweet):
     return tweet
 
 
-twilist = []
-for t in twi:
-    cleantwi = preprocessing(t['text'])
-    geo = t["bounding_box"]
+import re
+from textblob import TextBlob
+import sys
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+import os
+import nltk
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
+import string
+
+
+def preprocessing(tweet):
+    r1 = r'https?:/\/\S+'
+    ## remove @people
+    r2 = r'@[a-zA-Z0-9’!"#$%&\'()*+,-./:;<=>?@，。?★、…？“”‘’！\\]+'
+    ##remove tag
+    r3 = r'#[a-zA-Z0-9’!"#$%&\'()*+,-./:;<=>?@，。?★、…？“”‘’！\\]+'
+
+    tweet = tweet.encode('utf-8', 'replace').decode('utf-8')
+    tweet = re.sub(r1, "", tweet)
+    tweet = re.sub(r2, "", tweet)
+    tweet = re.sub(r3, "", str(tweet).lower().strip())
+    return tweet
+
+
+def analysistwi(t):
+    outtwitter = {}
+    cleantwi = preprocessing(t['text'])
+    outtwitter['id'] = t['id']
+    outtwitter['text'] = cleantwi
+    outtwitter["bounding_box"] = t["bounding_box"]
+    outtwitter["suburb"] = ""
     analy = TextBlob(cleantwi)
     score = SentimentIntensityAnalyzer().polarity_scores(cleantwi)
     neg = score['neg']
     neu = score['neu']
     pos = score['pos']
     print(cleantwi)
-    if neg > pos:
-        twilist.append(['negative', geo])
-    elif pos > neg:
-        twilist.append(['positive', geo])
-    else:
-        twilist.append(['neutural', geo])
 
-    print(analy.sentiment)
-    print(score)
-print(twilist)
+    if neg > pos:
+        outtwitter["sentiment"] = ('negative')
+    elif pos > neg:
+        outtwitter["sentiment"] = ('positive')
+    else:
+        outtwitter["sentiment"] = ('neutural')
+    return outtwitter
+
+
