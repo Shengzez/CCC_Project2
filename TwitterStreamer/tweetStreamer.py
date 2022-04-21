@@ -114,14 +114,14 @@ class TweetListener(Stream):
         #self.twe.append(data)
         #if len(self.twe) == self.limit:
             #self.disconnect()
-        print(tweetJson)
+        #print(tweetJson)
         # need to filter out the retweets
         if not tweetJson["text"].startswith('RT') and tweetJson["retweeted"] == False:
             # file.write(data.decode(encoding='UTF-8'))
             file.write(str(new_json))
             file.write("\n")
-            if tweetJson["place"] == None:
-                print("\nNO location information")
+            #if tweetJson["place"] == None:
+                #print("\nNO location information")
 
         return True
 
