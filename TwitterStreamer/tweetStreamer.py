@@ -14,10 +14,10 @@ nltk.download('vader_lexicon')
 secure_remote_server = cd.Server('http://admin:admin@172.26.129.141:5984')
 db = secure_remote_server['tweets']
 # My keys and tokens
-consumer_key = 'RxQZwmI6L7y9UfP2SIKAUrwYf'
-consumer_secret = 'CrFHPYuzs6zE2K39p6tuuzCQmcwHTgmdBg4OJsQkdKz0tS9WCV'
-access_token = '966805471507005440-PGgHxlDUi2Pse71xfAiC0a8LMa6KRIM'
-access_token_secret = 'royjCjA4mv172YIQlgiPEEOHWtB7AvN43uXzG7SNcv5tP'
+consumer_key = 'j3xcYYMhls6B7IMRgChB8LxO7'
+consumer_secret = '7mztn7gOqYFvONMD0s5xJDnkDlUUF5FvIbdRCfMsVEFmAouH7i'
+access_token = '966805471507005440-OJGJHd3CRttaLBMM36yewboo89A6Kd3'
+access_token_secret = 'qBDLFG7am4g3221GoP0CqMgOUr6WjBLPdsURTjB5u4UAr'
 
 access = {"consumer_key": consumer_key,
           "consumer_secret": consumer_secret,
@@ -114,7 +114,7 @@ class TweetListener(Stream):
         #self.twe.append(data)
         #if len(self.twe) == self.limit:
             #self.disconnect()
-        #print(tweetJson)
+        print(tweetJson)
         # need to filter out the retweets
         if not tweetJson["text"].startswith('RT') and tweetJson["retweeted"] == False:
             # file.write(data.decode(encoding='UTF-8'))
