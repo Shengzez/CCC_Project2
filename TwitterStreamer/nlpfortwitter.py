@@ -30,9 +30,13 @@ def analysistwi(t):
     outtwitter = {}
     cleantwi = preprocessing(t['text'])
     outtwitter['id'] = t['id']
+    outtwitter["user"] = t["user"]
     outtwitter['text'] = cleantwi
+    outtwitter["date"] = t["date"]
+    outtwitter["hashtags"] = t["hashtags"]
+    outtwitter["geo"] = t["geo"]
     outtwitter["bounding_box"] = t["bounding_box"]
-    outtwitter["suburb"] = ""
+    #outtwitter["suburb"] = ""
     analy = TextBlob(cleantwi)
     score = SentimentIntensityAnalyzer().polarity_scores(cleantwi)
     neg = score['neg']
