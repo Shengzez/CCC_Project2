@@ -5,12 +5,16 @@ import argparse
 from datetime import datetime
 # from tweetProcess import uploadImg, postRequest
 import time
+import nlp
+import couchdb as cd
 
+secure_remote_server = cd.Server('http://admin:admin@172.26.129.141:5984')
+db = secure_remote_server['tweets']
 # My keys and tokens
-consumer_key = 'RxQZwmI6L7y9UfP2SIKAUrwYf'
-consumer_secret = 'CrFHPYuzs6zE2K39p6tuuzCQmcwHTgmdBg4OJsQkdKz0tS9WCV'
-access_token = '966805471507005440-PGgHxlDUi2Pse71xfAiC0a8LMa6KRIM'
-access_token_secret = 'royjCjA4mv172YIQlgiPEEOHWtB7AvN43uXzG7SNcv5tP'
+consumer_key = 'XMmsyU6HRJ2PCXVulgjrM4WrX'
+consumer_secret = 'PEMlBYaGi9FKuCgRdodXHboeEAtGSQgajYm8leuN8P4hVb32jJ'
+access_token = '1512011770017513476-mTa2DmJ4VKTDT9T6LM4KoP4M5WEsnT'
+access_token_secret = 'W9BXmEmkZgn9BkHy3bNGvRG2tMojFeH4BId4OzMOsm56o'
 
 access = {"consumer_key": consumer_key,
           "consumer_secret": consumer_secret,
@@ -63,13 +67,15 @@ def dealStream(tweetJson, dataDict):
         else:
             dataDict["geo"] = []
 
-        if tweetJson["place"] != None and tweetJson["place"]["bounding_box"] != None:
+        if tweetJson["place"] != None and tweetJson["place"]["bounding_box"] !=None:
             dataDict["bounding_box"] = tweetJson["place"]["bounding_box"]["coordinates"]
-        else:
-            dataDict["bounding_box"] = []
 
         newJson = js.dumps(dataDict)
+        db.save(dataDict)
         return newJson
+        # print(type(newJson))
+        # print(newJson)
+        #return dataDict
         # responseJson = postRequest(DOMAIN, API_KEY, API_PORT["upload_tweet"]["Port"], API_PORT["upload_tweet"]["Header"], newJson, "tweet", file)
 
 
@@ -77,8 +83,8 @@ def dealStream(tweetJson, dataDict):
 
         print(e)
         print("Cannot upload a well-formatted tweet to couchDB")
-        file.write(str(dataDict))
-        #file.write("Cannot upload a well-formatted tweet to couchDB\n")
+        file.write(str(e) + "\n")
+        file.write("Cannot upload a well-formatted tweet to couchDB\n")
         time.sleep(30)
 
 
@@ -94,24 +100,27 @@ file = open(args.filename, "w")
 
 # This is a basic listener that just prints received tweets to stdout.
 class TweetListener(Stream):
-    twe = []
-    limit = 1000
+    # twe = []
+    # limit = 1000
 
     def on_data(self, data):
         dataDict = {}
         tweetJson = js.loads(data, encoding='utf-8')
         new_json = dealStream(tweetJson, dataDict)
-        self.twe.append(data)
-        if len(self.twe) == self.limit:
-            self.disconnect()
-        print(tweetJson)
+        # analy_twe = nlp.analysistwi(new_json)
+        # print('after: '+ analy_twe)
+        # self.twe.append(data)
+        # if len(self.twe) == self.limit:
+        #     self.disconnect()
+        #print(tweetJson)
         # need to filter out the retweets
         if not tweetJson["text"].startswith('RT') and tweetJson["retweeted"] == False:
             # file.write(data.decode(encoding='UTF-8'))
             file.write(str(new_json))
-            file.write("\n")
             if tweetJson["place"] == None:
-                print("\nNO location information")
+                file.write("\nNO location information\n")
+            else:
+                file.write("\n")
 
         return True
 
