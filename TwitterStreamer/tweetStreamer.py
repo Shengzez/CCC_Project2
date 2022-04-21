@@ -5,7 +5,6 @@ import argparse
 from datetime import datetime
 # from tweetProcess import uploadImg, postRequest
 import time
-import nlp
 import couchdb as cd
 
 secure_remote_server = cd.Server('http://admin:admin@172.26.129.141:5984')
