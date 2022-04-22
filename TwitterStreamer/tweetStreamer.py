@@ -14,10 +14,14 @@ nltk.download('vader_lexicon')
 secure_remote_server = cd.Server('http://admin:admin@172.26.129.141:5984')
 db = secure_remote_server['tweets']
 # My keys and tokens
-consumer_key = 'j3xcYYMhls6B7IMRgChB8LxO7'
-consumer_secret = '7mztn7gOqYFvONMD0s5xJDnkDlUUF5FvIbdRCfMsVEFmAouH7i'
-access_token = '966805471507005440-OJGJHd3CRttaLBMM36yewboo89A6Kd3'
-access_token_secret = 'qBDLFG7am4g3221GoP0CqMgOUr6WjBLPdsURTjB5u4UAr'
+consumer_key = 'XMmsyU6HRJ2PCXVulgjrM4WrX'
+consumer_secret = 'PEMlBYaGi9FKuCgRdodXHboeEAtGSQgajYm8leuN8P4hVb32jJ'
+access_token = '1512011770017513476-mTa2DmJ4VKTDT9T6LM4KoP4M5WEsnT'
+access_token_secret = 'W9BXmEmkZgn9BkHy3bNGvRG2tMojFeH4BId4OzMOsm56o'
+# consumer_key = 'j3xcYYMhls6B7IMRgChB8LxO7'
+# consumer_secret = '7mztn7gOqYFvONMD0s5xJDnkDlUUF5FvIbdRCfMsVEFmAouH7i'
+# access_token = '966805471507005440-OJGJHd3CRttaLBMM36yewboo89A6Kd3'
+# access_token_secret = 'qBDLFG7am4g3221GoP0CqMgOUr6WjBLPdsURTjB5u4UAr'
 
 access = {"consumer_key": consumer_key,
           "consumer_secret": consumer_secret,
@@ -109,17 +113,17 @@ class TweetListener(Stream):
 
     def on_data(self, data):
         dataDict = {}
-        tweetJson = js.loads(data, encoding='utf-8')
+        tweetJson = js.loads(data)
         new_json = dealStream(tweetJson, dataDict)
         #self.twe.append(data)
         #if len(self.twe) == self.limit:
             #self.disconnect()
-        print(tweetJson)
+        #print(tweetJson)
         # need to filter out the retweets
-        if not tweetJson["text"].startswith('RT') and tweetJson["retweeted"] == False:
+        # if not tweetJson["text"].startswith('RT') and tweetJson["retweeted"] == False:
             # file.write(data.decode(encoding='UTF-8'))
-            file.write(str(new_json))
-            file.write("\n")
+            # file.write(str(new_json))
+            # file.write("\n")
             #if tweetJson["place"] == None:
                 #print("\nNO location information")
 
