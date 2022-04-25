@@ -1,9 +1,16 @@
+---
 - name: Start a couchdb container
   become: yes
+  with_items: "{{ allnodes }}"
   docker_container:
     name: "{{ container_name }}"
     image: "{{ image_name }}"
+    ports:
+      - 1001:5984
+      - 1002:4369
+      - 1003:9100
     env:
       COUCHDB_USER: "{{ user }}"
       COUCHDB_PASSWORD: "{{ password }}"
+      NODENAME: "{{ item }}"
       COUCHDB_SECRET: "{{ cookie }}"
