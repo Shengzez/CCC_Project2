@@ -99,7 +99,8 @@ def dealStream(tweetJson, dataDict):
 parser = argparse.ArgumentParser(description='COMP90024 Project Twitter Streamer')
 # Use like:
 # python arg.py -l 1234 2345 3456 4567
-parser.add_argument('-l', '--list', nargs='+', default=[141, -38, 150, -34])
+# parser.add_argument('-l', '--list', nargs='+', default=[141, -38, 150, -34])
+parser.add_argument('-l', '--list', nargs='+', default=[144, -38.4, 145.5, -37.5])
 parser.add_argument('--filename', type=str, default="streamlog.txt")
 args = parser.parse_args()
 
