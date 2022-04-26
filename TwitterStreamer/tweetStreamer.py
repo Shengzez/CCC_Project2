@@ -8,7 +8,7 @@ import time
 import nlpfortwitter
 import nltk
 import couchdb as cd
-nltk.download('vader_lexicon')
+#nltk.download('vader_lexicon')
 
 
 secure_remote_server = cd.Server('http://admin:admin@172.26.129.141:5984')
