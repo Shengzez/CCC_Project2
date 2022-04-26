@@ -3,7 +3,7 @@ import re
 import string
 import sys
 import reverse_geocoder as rg
-
+import random
 import matplotlib.pyplot as plt
 import nltk
 import json
@@ -11,7 +11,7 @@ import numpy as np
 import pandas as pd
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from textblob import TextBlob
-nltk.download('vader_lexicon')
+#nltk.download('vader_lexicon')
 
 def preprocessing(tweet):
     r1 = r'https?:/\/\S+'
@@ -37,19 +37,26 @@ def analysistwi(t):
     outtwitter["hashtags"] = t["hashtags"]
     outtwitter["geo"] = t["geo"]
     outtwitter["bounding_box"] = t["bounding_box"]
-    lonsum = 0
-    latsum = 0
-    for lon, lat in t["bounding_box"][0]:
-        lonsum += lon
-        latsum += lat
-    long = lonsum / len(t["bounding_box"][0])
-    lati = latsum / len(t["bounding_box"][0])
+    # lonsum = 0
+    # latsum = 0
+    # for lon, lat in t["bounding_box"][0]:
+    #     lonsum += lon
+    #     latsum += lat
+    # long = lonsum / len(t["bounding_box"][0])
+    # lati = latsum / len(t["bounding_box"][0])
+    long1, lati1 = t["bounding_box"][0][0]
+    long2, lati2 = t["bounding_box"][0][2]
+    long = random.uniform(long1,long2)
+    lati = random.uniform(lati1, lati2)
     long = round(long, 3)
     lati = round(lati, 3)
     outtwitter["estimated_coordinate"] = (long,lati)
-    result = rg.search((lati, long))
+    result = rg.search((round(lati,1), round(long, 1)))
+    place_result = rg.search((lati, long))
     suburb = result[0]['name']
+    place = place_result[0]['name']
     outtwitter["suburb"] = suburb
+    outtwitter["place"] = place
     analy = TextBlob(cleantwi)
     score = SentimentIntensityAnalyzer().polarity_scores(cleantwi)
     neg = score['neg']
