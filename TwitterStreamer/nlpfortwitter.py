@@ -2,6 +2,7 @@ import os
 import re
 import string
 import sys
+import reverse_geocoder as rg
 
 import matplotlib.pyplot as plt
 import nltk
@@ -10,7 +11,7 @@ import numpy as np
 import pandas as pd
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from textblob import TextBlob
-#nltk.download('vader_lexicon')
+nltk.download('vader_lexicon')
 
 def preprocessing(tweet):
     r1 = r'https?:/\/\S+'
@@ -36,13 +37,24 @@ def analysistwi(t):
     outtwitter["hashtags"] = t["hashtags"]
     outtwitter["geo"] = t["geo"]
     outtwitter["bounding_box"] = t["bounding_box"]
-    #outtwitter["suburb"] = ""
+    lonsum = 0
+    latsum = 0
+    for lon, lat in t["bounding_box"][0]:
+        lonsum += lon
+        latsum += lat
+    long = lonsum / len(t["bounding_box"][0])
+    lati = latsum / len(t["bounding_box"][0])
+    long = round(long, 3)
+    lati = round(lati, 3)
+    outtwitter["estimated_coordinate"] = (long,lati)
+    result = rg.search((lati, long))
+    suburb = result[0]['name']
+    outtwitter["suburb"] = suburb
     analy = TextBlob(cleantwi)
     score = SentimentIntensityAnalyzer().polarity_scores(cleantwi)
     neg = score['neg']
     neu = score['neu']
     pos = score['pos']
-    #print(cleantwi)
 
     if neg > pos:
         outtwitter["sentiment"] = ('negative')

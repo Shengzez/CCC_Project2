@@ -18,6 +18,7 @@ db = secure_remote_server['tweets']
 # consumer_secret = 'PEMlBYaGi9FKuCgRdodXHboeEAtGSQgajYm8leuN8P4hVb32jJ'
 # access_token = '1512011770017513476-mTa2DmJ4VKTDT9T6LM4KoP4M5WEsnT'
 # access_token_secret = 'W9BXmEmkZgn9BkHy3bNGvRG2tMojFeH4BId4OzMOsm56o'
+
 consumer_key = 'j3xcYYMhls6B7IMRgChB8LxO7'
 consumer_secret = '7mztn7gOqYFvONMD0s5xJDnkDlUUF5FvIbdRCfMsVEFmAouH7i'
 access_token = '966805471507005440-OJGJHd3CRttaLBMM36yewboo89A6Kd3'
