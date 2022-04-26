@@ -1,9 +1,9 @@
 image_name: "ibmcom/couchdb3:3.2.1"
-container_name: "new_couchdb-container"
+container_name: "new_couchdb"
 user: admin
-password: "group-8"
+password: "admin"
 nodes_count: 3
-cookie: "a192aeb9904e6590849337933b000c99"
+cookie: "0f043e83af0ad4a1f078d8ea8900116b"
 masternode: 172.26.129.141
 othernodes:
   - 172.26.128.43

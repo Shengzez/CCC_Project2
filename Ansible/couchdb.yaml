@@ -5,7 +5,7 @@
   roles:
     - role: couchdb-container
 
-- hosts: couchdbmasternode
+- hosts: couchdbnodes:!couchdbmasternode
   vars_files:
     - host_vars/couchdb.yaml
   gather_facts: true

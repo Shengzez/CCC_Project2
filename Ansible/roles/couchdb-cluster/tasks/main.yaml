@@ -1,41 +1,50 @@
+---
 - name: couchdb cluster setup one
   become: yes
-  with_items: "{{ othernodes }}"
   uri:
-    url: http://{{ masternode }}:1001/_cluster_setup
+    url: http://{{ masternode }}:5984/_cluster_setup
+    status_code: 201
     method: POST
     user: "{{ user }}"
     password: "{{ password }}"
-    body_format: json
-    body: "{\"action\": \"enable_cluster\", \"bind_address\":\"0.0.0.0\",\
-      \"username\": \"{{ user }}\", \"password\":\"{{ password }}\", \"port\": \"1001\",\
-      \"remote_node\": \"{{ item }}\", \"node_count\": \"{{ nodes_count }}\",\
-      \"remote_current_user\":\"{{ user }}\", \"remote_current_password\":\"{{ password }}\"}"
+    force_basic_auth: yes
     headers:
       Content-Type: "application/json"
+    body_format: json
+    body: "{\"action\": \"enable_cluster\", \"bind_address\":\"0.0.0.0\",\
+      \"username\": \"{{ user }}\", \"password\":\"{{ password }}\", \"port\": \"5984\",\
+      \"remote_node\": \"{{ inventory_hostname }}\", \"node_count\": \"{{ nodes_count }}\",\
+      \"remote_current_user\":\"{{ user }}\", \"remote_current_password\":\"{{ password }}\"}"
 
 - name: couchdb cluster setup two
   become: yes
-  with_items: "{{ othernodes }}"
   uri:
-    url: http://{{ masternode }}:1001/_cluster_setup
+    url: http://{{ masternode }}:5984/_cluster_setup
+    status_code: 201
     method: POST
     user: "{{ user }}"
     password: "{{ password }}"
-    body_format: json
-    body: "{\"action\": \"add_node\", \"host\":\"{{ item }}\",\
-      \"port\": \"{{ port }}\", \"username\": \"{{ user }}\", \"password\":\"{{ password }}\"}"
+    force_basic_auth: yes
     headers:
       Content-Type: "application/json"
+    body_format: json
+    body: "{\"action\": \"add_node\", \"host\":\"{{ inventory_hostname }}\",\
+      \"port\": \"5984\", \"username\": \"{{ user }}\", \"password\":\"{{ password }}\"}"
+
 
 - name: couchdb cluster setup finish
   become: yes
   uri:
-    url: http://{{ user }}:{{ password }}@{{ masternode }}:1001/_cluster_setup
+    url: http://{{ masternode }}:5984/_cluster_setup
+    status_code: 500,201
     method: POST
     user: "{{ user }}"
     password: "{{ password }}"
-    body_format: json
-    body: '{\"action\": \"finish_cluster\"}'
+    force_basic_auth: yes
     headers:
       Content-Type: "application/json"
+    body_format: json
+    body: "{\"action\": \"finish_cluster\"}"
+
+
+

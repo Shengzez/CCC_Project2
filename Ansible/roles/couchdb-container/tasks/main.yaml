@@ -1,16 +1,18 @@
 ---
 - name: Start a couchdb container
   become: yes
-  with_items: "{{ allnodes }}"
   docker_container:
     name: "{{ container_name }}"
     image: "{{ image_name }}"
     ports:
-      - 1001:5984
-      - 1002:4369
-      - 1003:9100
+      - "5984:5984"
+      - "4369:4369"
+      - "9100-9200:9100-9200"
     env:
       COUCHDB_USER: "{{ user }}"
       COUCHDB_PASSWORD: "{{ password }}"
-      NODENAME: "{{ item }}"
+      NODENAME: "{{ inventory_hostname }}"
       COUCHDB_SECRET: "{{ cookie }}"
+      ERL_FLAGS: "-setcookie \"{{ cookie }}\" -name \"couchdb@{{ inventory_hostname }}\""
+      COUCHDB_ERLANG_COOKIE: "{{ cookie }}"
+
