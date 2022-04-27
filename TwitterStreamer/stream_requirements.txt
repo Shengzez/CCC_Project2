@@ -4,12 +4,10 @@ argparse
 datetime
 nltk
 couchdb
-re
 matplotlib
 numpy
 pandas
 textblob
 reverse_geocoder
 googlemaps
-random
 shapely
