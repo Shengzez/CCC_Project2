@@ -119,7 +119,7 @@ class TweetListener(Stream):
     def on_data(self, data):
         dataDict = {}
         tweetJson = js.loads(data)
-        new_json = dealStream(tweetJson, dataDict)
+        new_json = dealStream(tweetJson, dataDict, first_data)
         #self.twe.append(data)
         #if len(self.twe) == self.limit:
             #self.disconnect()
