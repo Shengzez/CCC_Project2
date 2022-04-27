@@ -12,3 +12,4 @@ textblob
 reverse_geocoder
 googlemaps
 random
+shapely

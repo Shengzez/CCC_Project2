@@ -1,21 +1,21 @@
 import os
 import re
-import string
-import sys
-import reverse_geocoder as rg
+# import string
+# import sys
+# import reverse_geocoder as rg
 import random
-import matplotlib.pyplot as plt
-import nltk
-import json
-import numpy as np
-import pandas as pd
+# import matplotlib.pyplot as plt
+# import nltk
+# import json
+# import numpy as np
+# import pandas as pd
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from textblob import TextBlob
 from shapely.geometry import Polygon
 from shapely.geometry import Point
 import json
 #nltk.download('vader_lexicon')
-data = json.load(open("suburb-vic.geojson"))
+data = json.load(open("TwitterStreamer/suburb-vic.geojson"))
 
 
 def preprocessing(tweet):

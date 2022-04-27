@@ -5,14 +5,14 @@ import argparse
 from datetime import datetime
 # from tweetProcess import uploadImg, postRequest
 import time
-import nlpfortwitter
+import tweetsProcess
 import nltk
 import couchdb as cd
 #nltk.download('vader_lexicon')
 
 
 secure_remote_server = cd.Server('http://admin:admin@172.26.129.141:5984')
-db = secure_remote_server['tweets']
+db = secure_remote_server['processed_tweets']
 # My keys and tokens
 # consumer_key = 'XMmsyU6HRJ2PCXVulgjrM4WrX'
 # consumer_secret = 'PEMlBYaGi9FKuCgRdodXHboeEAtGSQgajYm8leuN8P4hVb32jJ'
