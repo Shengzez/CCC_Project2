@@ -58,12 +58,14 @@ def analysistwi(t):
     long = round(long, 3)
     lati = round(lati, 3)
     outtwitter["estimated_coordinate"] = (long,lati)
+    outtwitter["suburb"] = "Notfound"
     for info in data["features"]:
         suburb = Polygon(info['geometry']["coordinates"][0])
         loc = Point((long,lati))
         if suburb.contains(loc):
             outtwitter["suburb"] = (info['properties']["vic_loca_2"])
-    
+       
+
     analy = TextBlob(cleantwi)
     score = SentimentIntensityAnalyzer().polarity_scores(cleantwi)
     neg = score['neg']
