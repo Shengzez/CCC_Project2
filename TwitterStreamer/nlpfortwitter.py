@@ -11,9 +11,12 @@ import numpy as np
 import pandas as pd
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from textblob import TextBlob
-import googlemaps as gmaps
-gmaps_key = gmaps.Client(key="AIzaSyCbIGvQr9YZ35mPLYTth4c_r1ViLAGOhrU")
+from shapely.geometry import Polygon
+from shapely.geometry import Point
+import json
 #nltk.download('vader_lexicon')
+data = json.load(open("suburb-vic.geojson"))
+
 
 def preprocessing(tweet):
     r1 = r'https?:/\/\S+'
@@ -55,12 +58,12 @@ def analysistwi(t):
     long = round(long, 3)
     lati = round(lati, 3)
     outtwitter["estimated_coordinate"] = (long,lati)
-    result = rg.search((round(lati,1), round(long, 1)))
-    place_result = rg.search((lati, long))
-    suburb = result[0]['name']
-    place = place_result[0]['name']
-    outtwitter["suburb"] = suburb
-    outtwitter["place"] = place
+    for info in data["features"]:
+        suburb = Polygon(info['geometry']["coordinates"][0])
+        loc = Point((long,lati))
+        if suburb.contains(loc):
+            outtwitter["suburb"] = (info['properties']["vic_loca_2"])
+    
     analy = TextBlob(cleantwi)
     score = SentimentIntensityAnalyzer().polarity_scores(cleantwi)
     neg = score['neg']
