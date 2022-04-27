@@ -50,8 +50,8 @@ def analysistwi(t):
     long2, lati2 = t["bounding_box"][0][2]
     long = random.uniform(long1,long2)
     lati = random.uniform(lati1, lati2)
-    reverse_geocode_result = gmaps_key.reverse_geocode((lati, long))
-    outtwitter["geo_info"] = reverse_geocode_result[0]
+    #reverse_geocode_result = gmaps_key.reverse_geocode((lati, long))
+    #outtwitter["geo_info"] = reverse_geocode_result[0]
     long = round(long, 3)
     lati = round(lati, 3)
     outtwitter["estimated_coordinate"] = (long,lati)
