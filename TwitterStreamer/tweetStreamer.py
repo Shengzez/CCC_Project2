@@ -29,7 +29,7 @@ access = {"consumer_key": consumer_key,
           "access_token": access_token,
           "access_secret": access_token_secret}
 
-
+first_data = True
 # Get the authentication
 def getAuth(access):
     auth = tweepy.OAuthHandler(access['consumer_key'], access['consumer_secret'])
@@ -37,7 +37,7 @@ def getAuth(access):
     return auth
 
 
-def dealStream(tweetJson, dataDict):
+def dealStream(tweetJson, dataDict, first_data):
     try:
         dataDict = {}
         dataDict["id"] = tweetJson["id_str"]
@@ -82,8 +82,11 @@ def dealStream(tweetJson, dataDict):
 
         newJson = js.dumps(dataDict)
         if dataDict["bounding_box"]!= []:
-            process_tweet = nlpfortwitter.analysistwi(dataDict)
+            process_tweet = tweetsProcess.analysistwi(dataDict)
             db.save(process_tweet)
+            if first_data:
+                print(process_tweet)
+                first_data = False
         return dataDict
         # responseJson = postRequest(DOMAIN, API_KEY, API_PORT["upload_tweet"]["Port"], API_PORT["upload_tweet"]["Header"], newJson, "tweet", file)
 
