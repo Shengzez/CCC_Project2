@@ -6,3 +6,5 @@
 Ansible/.idea/Ansible.iml
 Ansible/.idea/modules.xml
 Ansible/.idea/vcs.xml
+Backend/__pycache__
+Backend/venv
