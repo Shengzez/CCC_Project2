@@ -31,7 +31,7 @@ class AllTweets(Resource):
         for key in res.keys():
             res[key]['positive_rate'] = res[key]['positive'] / (res[key]['positive'] + res[key]['negative'] + res[key]['neutural'])
         
-        response = jsonify({'some': 'data'})
+        response = jsonify(res)
         response.headers.add('Access-Control-Allow-Origin', '*')
 
         return response
