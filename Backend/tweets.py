@@ -25,15 +25,11 @@ class AllTweets(Resource):
         r = r.json()
         for row in r['rows']:
             ky = row['key']
-            print(ky)
-            print(row['value'])
             if ky[0] not in res.keys():
                 res[ky[0]] = {'name': ky[0].capitalize(), 'positive': 0, 'negative':0, 'neutural':0}
             res[ky[0]][ky[1]] += row['value']
         for key in res.keys():
             res[key]['positive_rate'] = res[key]['positive'] / (res[key]['positive'] + res[key]['negative'] + res[key]['neutural'])
-        print(res)
-
         return jsonify(res)
 
     '''
