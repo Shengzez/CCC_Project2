@@ -30,7 +30,11 @@ class AllTweets(Resource):
             res[ky[0]][ky[1]] += row['value']
         for key in res.keys():
             res[key]['positive_rate'] = res[key]['positive'] / (res[key]['positive'] + res[key]['negative'] + res[key]['neutural'])
-        return jsonify(res)
+        
+        response = jsonify({'some': 'data'})
+        response.headers.add('Access-Control-Allow-Origin', '*')
+
+        return response
 
     '''
     USERS = [
