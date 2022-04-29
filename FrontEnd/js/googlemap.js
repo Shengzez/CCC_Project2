@@ -5,7 +5,7 @@
  */
 
 
-const mapStyle = [
+ const mapStyle = [
   {
     stylers: [{ visibility: "on" }],
   },
@@ -84,31 +84,60 @@ function loadCensusData(variable) {
   xhr.open("GET", variable );
   xhr.onload = function () {
     const censusData = JSON.parse(xhr.responseText);
-    console.log(censusData)
-    censusData.shift(); // the first row contains column names
-    censusData.forEach((row) => {
-      const censusVariable = parseFloat(90);
-      // const stateId = row[1];
-      const stateId = "MELBOURNE";
-      console.log(stateId)
+    //console.log(censusData);
+    // censusData.shift(); // the first row contains column names
+    // censusData.forEach((row) => {
+    //   console.log(row)
+    //   const censusVariable = parseFloat(90);
+    //   // const stateId = row[1];
+    //   const stateId = "MELBOURNE";
+    //   console.log(stateId)
 
-      // keep track of min and max values
+    //   // keep track of min and max values
+    //   if (censusVariable < censusMin) {
+    //     censusMin = censusVariable;
+    //   }
+      
+
+    //   if (censusVariable > censusMax) {
+    //     censusMax = censusVariable;
+    //   }
+
+    //   const state = map.data.getFeatureById(stateId);
+
+    //   // update the existing row with the new data
+    //   if (state) {
+    //     state.setProperty("census_variable", censusVariable);
+    //   }
+    // });
+    for (const [key, value] of Object.entries(censusData)) {
+      const censusVariable = value['positive_rate']*100;
+      const pos = value["positive"];
+      const neg = value["negative"];
+      const neu = value["neutural"];
+      const name = value["name"];
+
+      const stateId = key;
+      console.log(key, value);
       if (censusVariable < censusMin) {
         censusMin = censusVariable;
       }
       
-
       if (censusVariable > censusMax) {
         censusMax = censusVariable;
       }
-
+      
       const state = map.data.getFeatureById(stateId);
-
-      // update the existing row with the new data
       if (state) {
-        state.setProperty("census_variable", censusVariable);
-      }
-    });
+          state.setProperty("positive", pos);
+          state.setProperty("negative", neg);
+          state.setProperty("neutural", neu);
+          state.setProperty("stateId", key);
+          state.setProperty("name", name);
+            state.setProperty("census_variable", censusVariable);
+          }
+
+    };
     // update and display the legend
     document.getElementById("census-min").textContent =
       censusMin.toLocaleString();
@@ -191,7 +220,7 @@ function mouseInToRegion(e) {
   // update the label
   // document.getElementById("data-label").textContent =
   //   e.feature.getProperty("NAME");
-  document.getElementById("data-label").textContent ="MELBOURNE";
+  document.getElementById("data-label").textContent =e.feature.getProperty("stateId");
   document.getElementById("data-value").textContent = e.feature
     .getProperty("census_variable")
     .toLocaleString();
