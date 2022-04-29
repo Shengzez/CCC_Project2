@@ -15,13 +15,13 @@ class Tweets(Resource):
 
         return jsonify(list(self.db.find(mango)))
 
-class AllTweets(Resource):
+class SentimentCount(Resource):
     def __init__(self):
         self.db = remote_server['processed_tweets']
 
-    def get(self):
+    def get(self, keyword):
         res = {}
-        r = requests.get(DB_URI + "/processed_tweets/_design/sentiment/_view/overall?reduce=true&group_level=2")
+        r = requests.get(DB_URI + f"/processed_tweets/_design/sentiment/_view/{keyword}?reduce=true&group_level=2")
         r = r.json()
         for row in r['rows']:
             ky = row['key']
