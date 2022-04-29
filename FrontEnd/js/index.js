@@ -67,3 +67,4 @@ var vm = new Vue({
 		}
 	}
 })
+//  background:url(../images/data08.png) no-repeat #061537; 

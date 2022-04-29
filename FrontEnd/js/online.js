@@ -24,9 +24,9 @@ $(function() {
                 radius : [45, 90],
                 center : ['50%', '45%'],
                 data:[
-                    {value:100, name:'Neutral',itemStyle:{normal:{color:'#ff7800'}}},
-                    {value:200, name:'Positive',itemStyle:{normal:{color:'#05f509'}}},
-                    {value:600, name:'Negative',itemStyle:{normal:{color:'#f76bd6'}}}
+                    {value:100, name:'Neutral',itemStyle:{normal:{color:'#f3e73af4'}}},
+                    {value:200, name:'Positive',itemStyle:{normal:{color:'#98b9f3f4'}}},
+                    {value:600, name:'Negative',itemStyle:{normal:{color:'#ed322ceb'}}}
                 ]
             }
         ]
