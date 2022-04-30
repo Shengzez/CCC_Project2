@@ -38,6 +38,7 @@ function initMap() {
   map.data.setStyle(styleFeature);
   map.data.addListener("mouseover", mouseInToRegion);
   map.data.addListener("mouseout", mouseOutOfRegion);
+  //document.getElementById("container2").addEventListener("mouseover", mouseInToRegion)
 
   // wire up the button
   const selectBox = document.getElementById("census-variable");
@@ -115,8 +116,7 @@ function loadCensusData(variable) {
       const pos = value["positive"];
       const neg = value["negative"];
       const neu = value["neutural"];
-      const name = value["name"];
-
+      const name = value["name"]; 
       const stateId = key;
       console.log(key, value);
       if (censusVariable < censusMin) {
@@ -215,12 +215,19 @@ function mouseInToRegion(e) {
   // set the hover state so the setStyle function can change the border
   e.feature.setProperty("state", "hover");
 
-  const percent =e.feature.getProperty("census_variable");
-
+  const percent = e.feature.getProperty("census_variable");
+  var pos_out = e.feature.getProperty("positive");
+  var neg_out = e.feature.getProperty("negative");
+  var neu_out = e.feature.getProperty("neutural");
   // update the label
   // document.getElementById("data-label").textContent =
   //   e.feature.getProperty("NAME");
   document.getElementById("data-label").textContent =e.feature.getProperty("stateId");
+  document.getElementById("pos_report").textContent =e.feature.getProperty("positive");
+  document.getElementById("neg_report").textContent =e.feature.getProperty("negative");
+  document.getElementById("neu_report").textContent =e.feature.getProperty("neutural");
+  addPie(pos_out, neg_out, neu_out);
+  addBar(pos_out, neg_out, neu_out);
   document.getElementById("data-value").textContent = e.feature
     .getProperty("census_variable")
     .toLocaleString();
@@ -240,4 +247,99 @@ function mouseOutOfRegion(e) {
 
 window.initMap = initMap;
 index.js
- 
+
+function addPie(pos, neg, neu) {
+  var dom = document.getElementById("container2");
+  var myChart = echarts.init(dom);
+  option = null;
+  option = {
+      legend: {
+          x : 'center',
+          y : 'bottom',
+          itemWidth: 12,
+          itemHeight: 12,
+          textStyle:{//图例文字的样式
+              color:'#fff',
+              fontSize:16
+          },
+          data:['Positive','Negative','Neutral']
+      },
+      calculable : true,
+      
+      series : [
+          {
+              name:'面积模式',
+              type:'pie',
+              radius : [45, 90],
+              center : ['50%', '45%'],
+              data:[
+                  {value: pos, name:'Positive',itemStyle:{normal:{color:'#0f9f59'}}},
+                  {value: neg, name:'Negative',itemStyle:{normal:{color:'#ed322ceb'}}},
+                  {value: neu, name:'Neutral',itemStyle:{normal:{color:'#f3e73af4'}}}
+              ]
+          }
+      ]
+  };
+  ;
+  myChart.setOption(option, true);
+};
+
+function addBar(pos, neg, neu) {
+  var dom = document.getElementById("container3");
+  var myChart = echarts.init(dom);
+  var app = {};
+  option = null;
+
+  option = {
+      tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+              type: 'none'
+          },
+          formatter: function (params) {
+              return params[0].name + ': ' + params[0].value;
+          }
+      },
+      xAxis: {
+          data: ['Positive', 'Nagative', 'Neutral'],
+          axisTick: {show: false},
+          axisLine: {show: false},
+          axisLabel: {
+              textStyle: {
+                  color: '#ffffffff',    
+              }
+          }
+      },
+      yAxis: {
+          splitLine: {show: false},
+          axisTick: {show: false},
+          axisLine: {show: false},
+          axisLabel: {show: false}
+      },
+      color: function(params) {
+        //注意，如果颜色太少的话，后面颜色不会自动循环，最好多定义几个颜色
+        //#ffdc60,#ee6666,#9fe080,#5470c6
+        var colorList = ['#0f9f59','#ed322ceb', '#f3e73af4'];
+        return colorList[params.dataIndex]
+        },
+      series: [{
+          name: 'hill',
+          type: 'pictorialBar',
+          barCategoryGap: '-130%',
+          // symbol: 'path://M0,10 L10,10 L5,0 L0,10 z',
+          symbol: 'path://M0,10 L10,10 C5.5,10 5.5,5 5,0 C4.5,5 4.5,10 0,10 z',
+          itemStyle: {
+              normal: {
+                  opacity: 0.7
+              },
+              emphasis: {
+                  opacity: 1
+              }
+          },
+          //"这里规定下data"
+          data: [pos,neg,neu]
+      }]
+  };;
+
+  myChart.setOption(option, true);
+};
