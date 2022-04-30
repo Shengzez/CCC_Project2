@@ -27,15 +27,7 @@
         <iframe frameborder="0" src="js/index.html" style="width: 100%; height: 100%"></iframe>
       </span>
 			<div class="content_left">
-        <div class="select"  tabindex="0" hidefocus="true">
-          <div class="select-div">
-              <h1>Select Scenario</h1>
-          </div>
-          <ul class="select-ul">
-              <li data-value="1"><h1>Scenario&nbsp1</h1></li>
-              <li data-value="2"><h1>Scenario&nbsp2</h1></li>
-          </ul>
-        </div>
+
 				<div class="dtuplc">
           <div class="title1"> 	<img src="images/twitter.png" /> &nbsp&nbspData Source</div>
 					<div class="dtu">
@@ -55,41 +47,11 @@
         </div>
 			</div>
 			<div class="content_center">
-				<div class="center_top">
+			<div class="center_top" >
           
       <!-- Google map here -->
 
       <div id="controls" class="nicebox">
-        <div>
-            <select id="census-variable">
-              <option
-                value = "http://172.26.128.133:5555/sentiment/overall"
-              >
-                Overall
-              </option>
-              <!-- <option
-                value="https://storage.googleapis.com/mapsdevsite/json/DP05_0017E"
-              >
-                Median age
-              </option>
-              <option
-                value="https://storage.googleapis.com/mapsdevsite/json/DP05_0001E"
-              >
-                Total population
-              </option>
-              <option
-                value="https://storage.googleapis.com/mapsdevsite/json/DP02_0016E"
-              >
-                Average family size
-              </option> -->
-              <option
-              value = "http://172.26.128.133:5555/sentiment/housing"
-
-              >
-                Housing
-              </option>
-            </select>
-          </div>
         <div id="distribution_map">
         </div>
         <div id="legend">
@@ -104,8 +66,8 @@
       <span id="data-value"></span>
     </div>
     <div id="map"></div>
-				</div>
-				<div class="center_bot">
+		</div>
+				<div class="center_bot" >
 					<table class="panel-table"bordercolor="#0d48e0" border="1">
                         <thead bgcolor="#0e4ae0" align="center" >
                         <tr height="40">
@@ -136,47 +98,35 @@
 				<div class="report">
 					<div class="report1">
 						<p>Positive</p>
-						<small>{{alarm.alarm}}条</small>
+						<small id="pos_report">0</small>
 					</div>
 					<div class="report2">
 						<p>Negative</p>
-						<small>{{alarm.fault}} 条</small>
+						<small id="neg_report">0</small>
 					</div>
-          <div class="report3">
+                    <div class="report3">
 						<p>Neutral</p>
-						<small>{{alarm.fault}} 条</small>
+						<small id="neu_report">0</small>
 					</div>
 				</div>
 				<div class="news_report">
-					<div class="title"><img src="images/crosshair.png" /> Undecided </div>
-					<ul class="dropdown">
-            <li><a href="#">Select&nbspArea </a>
-                
-                <ul>
-                    <li><a href="", value = "http://172.26.128.133:5555/sentiment/housing">
-                        West Mel</a></li>
-                    <li><a href="">Easr Mel</a></li>
-                    <li><a href="#">Central Mel</a>
-                        <ul>
-                            <li><a href="">unimelb</a></li>
-                            <li><a href="">Rmit</a></li>
-                            <li><a href="#">KFC</a>
-                                <ul>
-                                    <li><a href="">学校门口KFC</a></li>
-                                    <li><a href="">Mel central KFC</a></li>
-                                    <li><a href="">地铁站KFC</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="">Light house</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-				</div>
+					<div class="title"><img src="images/crosshair.png" /> Choose Scenarios </div>
+                    <div class="news_list">
+                        <div class="select-box">
+                            <label for="census-variable" class="label select-box1"><span class="label-desc">Overall</span> </label>
+                            <select id = "census-variable" class="select">
+                              <option value = "http://172.26.128.133:5555/sentiment/overall">Overall</option>
+                              <option value = "http://172.26.128.133:5555/sentiment/housing">Housing</option>
+                            </select>
+                            
+                          </div>
+                    </div>
+        
+			</div>
 				<div class="data_box">
 					<div class="title"><img src="images/columns.png" /> Barchart</div>
 					<div class="data_con" id="container4">
+            </div>
 					</div>
 				</div>
 			</div>
@@ -341,7 +291,11 @@
 		    })
 		
 		</script>
-		<script type="text/javascript" src="js/jquery.min.js"></script>		
+        <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbIGvQr9YZ35mPLYTth4c_r1ViLAGOhrU&callback=initMap&v=weekly"
+        defer>   </script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>	
+        <script type="text/javascript" src="js/googlemap.js"></script>	
 		<script type="text/javascript" src="js/echarts.min.js"></script>
 		<script type="text/javascript" src="js/china.js"></script>
 		<script type="text/javascript" src="js/vue.min.js"></script>
@@ -353,11 +307,7 @@
 		<script type="text/javascript" src="js/industry.js"></script>
 		<script type="text/javascript" src="js/data.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript" src="js/base.js"></script>
-    <script type="text/javascript" src="js/googlemap.js"></script>
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbIGvQr9YZ35mPLYTth4c_r1ViLAGOhrU&callback=initMap&v=weekly"
-      defer
-    ></script>
+        <script type="text/javascript" src="js/base.js"></script>
+        <script type="text/javascript" src="js/dropdown.js"></script>
 	</body>
 </html>
