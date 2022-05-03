@@ -23,18 +23,24 @@ class SentimentCount(Resource):
         res = {}
         r = requests.get(DB_URI + f"/processed_tweets/_design/sentiment/_view/{keyword}?reduce=true&group_level=2")
         r = r.json()
-        total = 0
+
+
         for row in r['rows']:
             ky = row['key']
             if ky[0] not in res.keys():
                 res[ky[0]] = {'name': ky[0].capitalize(), 'positive': 0, 'negative':0, 'neutural':0}
             res[ky[0]][ky[1]] += row['value']
+        
+        res['TOTAL']['positive'] = 0
+        res['TOTAL']['negative'] = 0
+        res['TOTAL']['neutural'] = 0
+
         for key in res.keys():
             res[key]['positive_rate'] = res[key]['positive'] / (res[key]['positive'] + res[key]['negative'] + res[key]['neutural'])
-            total += (res[key]['positive'] + res[key]['negative'] + res[key]['neutural'])
-        
-        res['TOTAL'] = total
-        
+            res['TOTAL']['positive'] += res[key]['positive'] 
+            res['TOTAL']['negative'] += res[key]['negative'] 
+            res['TOTAL']['neutural'] += res[key]['neutural']
+                
         response = jsonify(res)
         response.headers.add('Access-Control-Allow-Origin', '*')
 
