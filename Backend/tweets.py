@@ -30,6 +30,7 @@ class SentimentCount(Resource):
             res[ky[0]][ky[1]] += row['value']
         for key in res.keys():
             res[key]['positive_rate'] = res[key]['positive'] / (res[key]['positive'] + res[key]['negative'] + res[key]['neutural'])
+            res[key]['total_tweets'] = res[key]['positive'] + res[key]['negative'] + res[key]['neutural']
         
         response = jsonify(res)
         response.headers.add('Access-Control-Allow-Origin', '*')
