@@ -5,17 +5,29 @@
 		<title>Group 8 Data Visdualization</title>
 		<link rel="stylesheet" href="css/style.css" />
 		<script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+    <style>
+      h1{
+        font-size: 18px;
+        font-family: Arial,"Microsoft Yahei";  
+        font-weight: bold;
+        color:rgb(255, 255, 255);
+      }
+    </style>
+
 	</head>
 	<body>
+    <img src="images/logo.png" style=" font-size:18px; position: absolute; left: -30px; top:-55px; "/> 
 		<header>
-			<img src="images/group.png" /> Statistical Result
+			<img src="images/group.png" /> <font color = "#F0F8FF" >Statistical Result</font>
 			<span id=localtime style=" font-size:18px; position: absolute; right: 30px; top:-20px; "></span>
 		</header>
+    
 		<div id="content">
       <span class="cans" style="opacity: .3">
         <iframe frameborder="0" src="js/index.html" style="width: 100%; height: 100%"></iframe>
       </span>
 			<div class="content_left">
+
 				<div class="dtuplc">
           <div class="title1"> 	<img src="images/twitter.png" /> &nbsp&nbspData Source</div>
 					<div class="dtu">
@@ -25,27 +37,37 @@
 						<div id="container1" style="height: 100%"></div>
 					</div>
 				</div>
-				<!--
-                	DTU和PLC完
-                -->
-                <div class="online">
-                	<div class="title"><img src="images/pie-chart.png" /> Sentiment analysis pie</div>
-                	<div class="online_con" id="container2">
-                		
-                	</div>
-                </div>
-                <div class="industry">
-                	<div class="title"><img src="images/bar-chart-2.png" /> Sentiment analysis bar</div>
-                	<div class="industry_con" id="container3"></div>
-                </div>
+        <div class="online">
+          <div class="title"><img src="images/pie-chart.png" /> Sentiment analysis pie</div>
+          <div class="online_con" id="container2"> </div>
+        </div>
+        <div class="industry">
+          <div class="title"><img src="images/bar-chart-2.png" /> Sentiment analysis bar</div>
+          <div class="industry_con" id="container3"></div>
+        </div>
 			</div>
 			<div class="content_center">
-				<div class="center_top">
-					<div class="title"><img src="images/icon03.png" /> Google map loads here</div>
-					<div class="center_top_con" id="distribution_map">
-					</div>
-				</div>
-				<div class="center_bot">
+			<div class="center_top" >
+          
+      <!-- Google map here -->
+
+      <div id="controls" class="nicebox">
+        <div id="distribution_map">
+        </div>
+        <div id="legend">
+          <div id="census-min">min</div>
+          <div class="color-key"><span id="data-caret">&#x25c6;</span></div>
+          <div id="census-max">max</div>
+        </div>
+      </div>
+      <!-- Google map end -->
+    <div id="data-box" class="nicebox">
+      <label id="data-label" for="data-value"></label>
+      <span id="data-value"></span>
+    </div>
+    <div id="map"></div>
+		</div>
+				<div class="center_bot" >
 					<table class="panel-table"bordercolor="#0d48e0" border="1">
                         <thead bgcolor="#0e4ae0" align="center" >
                         <tr height="40">
@@ -76,30 +98,35 @@
 				<div class="report">
 					<div class="report1">
 						<p>Positive</p>
-						<small>{{alarm.alarm}}条</small>
+						<small id="pos_report">0</small>
 					</div>
 					<div class="report2">
 						<p>Negative</p>
-						<small>{{alarm.fault}} 条</small>
+						<small id="neg_report">0</small>
 					</div>
-          <div class="report3">
+                    <div class="report3">
 						<p>Neutral</p>
-						<small>{{alarm.fault}} 条</small>
+						<small id="neu_report">0</small>
 					</div>
 				</div>
 				<div class="news_report">
-					<div class="title"><img src="images/crosshair.png" /> Undecided </div>
-					<div class="news_list">
-						<ul>
-							<li v-for="item in almMsg.slice(0,3)" class="li02">
-							    {{ item.msg }}
-							</li>
-						</ul>
-					</div>
-				</div>
+					<div class="title"><img src="images/crosshair.png" /> Choose Scenarios </div>
+                    <div class="news_list">
+                        <div class="select-box">
+                            <label for="census-variable" class="label select-box1"><span class="label-desc">Overall</span> </label>
+                            <select id = "census-variable" class="select">
+                              <option value = "http://172.26.128.133:5555/sentiment/overall">Overall</option>
+                              <option value = "http://172.26.128.133:5555/sentiment/housing">Housing</option>
+                            </select>
+                            
+                          </div>
+                    </div>
+        
+			</div>
 				<div class="data_box">
 					<div class="title"><img src="images/columns.png" /> Barchart</div>
 					<div class="data_con" id="container4">
+            </div>
 					</div>
 				</div>
 			</div>
@@ -264,7 +291,11 @@
 		    })
 		
 		</script>
-		<script type="text/javascript" src="js/jquery.min.js"></script>		
+        <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbIGvQr9YZ35mPLYTth4c_r1ViLAGOhrU&callback=initMap&v=weekly"
+        defer>   </script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>	
+        <script type="text/javascript" src="js/googlemap.js"></script>	
 		<script type="text/javascript" src="js/echarts.min.js"></script>
 		<script type="text/javascript" src="js/china.js"></script>
 		<script type="text/javascript" src="js/vue.min.js"></script>
@@ -276,5 +307,7 @@
 		<script type="text/javascript" src="js/industry.js"></script>
 		<script type="text/javascript" src="js/data.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/base.js"></script>
+        <script type="text/javascript" src="js/dropdown.js"></script>
 	</body>
 </html>
