@@ -31,9 +31,7 @@ class SentimentCount(Resource):
                 res[ky[0]] = {'name': ky[0].capitalize(), 'positive': 0, 'negative':0, 'neutural':0}
             res[ky[0]][ky[1]] += row['value']
         
-        res['TOTAL']['positive'] = 0
-        res['TOTAL']['negative'] = 0
-        res['TOTAL']['neutural'] = 0
+        res['TOTAL'] = {'positive': 0, 'negative':0, 'neutural':0}
 
         for key in res.keys():
             res[key]['positive_rate'] = res[key]['positive'] / (res[key]['positive'] + res[key]['negative'] + res[key]['neutural'])
