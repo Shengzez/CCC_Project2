@@ -1,0 +1,6 @@
+- hosts: backend
+  vars_files:
+    - host_vars/backend.yaml
+  gather_facts: false
+  roles:
+    - role: run-backend

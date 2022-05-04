@@ -1,0 +1,7 @@
+version: "3.8"
+
+services:
+  backend:
+    build: .
+    ports:
+      - "5555:5555"
