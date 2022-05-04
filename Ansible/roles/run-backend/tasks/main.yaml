@@ -1,6 +1,6 @@
 - name: clone git repo
   ansible.builtin.git:
     repo: '{{ github_ssh }}'
-    dest: '{{ working_dir }}'
+    dest: '{{ working_dir }}/{{ repo_name }}'
     single_branch: yes
     accept_hostkey: yes
