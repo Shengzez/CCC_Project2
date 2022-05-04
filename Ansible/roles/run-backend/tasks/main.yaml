@@ -4,3 +4,52 @@
     dest: '{{ working_dir }}/{{ repo_name }}'
     single_branch: yes
     accept_hostkey: yes
+
+
+- name: Find list of docker files
+  find:
+    paths: '{{ working_dir }}/{{ repo_name }}/{{ dockerfile_path }}/'
+    file_type: file
+    recurse: yes
+  register: files_matched
+
+
+- name: Debug files_matched loop
+  debug:
+    var: item.path
+  loop: "{{ files_matched.files|flatten(levels=1) }}"
+  loop_control:
+      label: "{{ item.path }}"
+
+
+- name: Copy Docker File
+  become: yes
+  copy:
+    remote_src: yes
+    src: '{{ item.path }}'
+    dest: '{{ working_dir }}'
+    owner: root
+    mode: 600
+  with_items:
+    - "{{ files_matched.files }}"
+  # with_fileglob: '{{ working_dir }}/{{ repo_name }}/{{ dockerfile_path }}/*'
+
+
+- name: deploy Docker Compose stack
+  become: yes
+  docker_compose:
+    project_src: '{{ working_dir }}'
+    build: yes
+
+
+
+# - name: Create docker container
+#   become: yes
+#   docker_container:
+#     name: '{{ container_name }}'
+#     image: "python:3.9.12"
+#     state: started
+#     ports:
+#       - "{{ backend_port }}:5555"
+
+

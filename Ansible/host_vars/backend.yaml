@@ -4,4 +4,7 @@ repo_name: "CCC_Project2"
 github_url: "https://github.com/Shengzez/CCC_Project2.git"
 github_ssh: "git@github.com:Shengzez/CCC_Project2.git"
 
-dockerfile_path: ""
+dockerfile_path: "Docker/backend"
+
+container_name: "backend-test"
+backend_port: 5556
