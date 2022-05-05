@@ -33,12 +33,298 @@ function initMap() {
     // center: { lat: 40, lng: -100 },
     zoom: 13,
     styles: mapStyle,
+    mapTypeId: "roadmap",
+    styles:[
+      {
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "color": "#1d2c4d"
+          }
+        ]
+      },
+      {
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#8ec3b9"
+          }
+        ]
+      },
+      {
+        "elementType": "labels.text.stroke",
+        "stylers": [
+          {
+            "color": "#000000"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative.country",
+        "elementType": "geometry.stroke",
+        "stylers": [
+          {
+            "color": "#4b6878"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative.country",
+        "elementType": "labels.text",
+        "stylers": [
+          {
+            "color": "#ffeb3b"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative.land_parcel",
+        "elementType": "labels",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative.land_parcel",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#64779e"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative.province",
+        "elementType": "geometry.stroke",
+        "stylers": [
+          {
+            "color": "#4b6878"
+          }
+        ]
+      },
+      {
+        "featureType": "landscape.man_made",
+        "elementType": "geometry.stroke",
+        "stylers": [
+          {
+            "color": "#334e87"
+          }
+        ]
+      },
+      {
+        "featureType": "landscape.natural",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "color": "#023e58"
+          }
+        ]
+      },
+      {
+        "featureType": "poi",
+        "stylers": [
+          {
+            "color": "#050000"
+          }
+        ]
+      },
+      {
+        "featureType": "poi",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "color": "#283d6a"
+          }
+        ]
+      },
+      {
+        "featureType": "poi",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#6f9ba5"
+          }
+        ]
+      },
+      {
+        "featureType": "poi",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+          {
+            "color": "#1d2c4d"
+          }
+        ]
+      },
+      {
+        "featureType": "poi.business",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "poi.park",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "color": "#023e58"
+          }
+        ]
+      },
+      {
+        "featureType": "poi.park",
+        "elementType": "labels.text",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "poi.park",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#3C7680"
+          }
+        ]
+      },
+      {
+        "featureType": "road",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "color": "#304a7d"
+          }
+        ]
+      },
+      {
+        "featureType": "road",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#98a5be"
+          }
+        ]
+      },
+      {
+        "featureType": "road",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+          {
+            "color": "#1d2c4d"
+          }
+        ]
+      },
+      {
+        "featureType": "road.highway",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "color": "#2c6675"
+          }
+        ]
+      },
+      {
+        "featureType": "road.highway",
+        "elementType": "geometry.stroke",
+        "stylers": [
+          {
+            "color": "#255763"
+          }
+        ]
+      },
+      {
+        "featureType": "road.highway",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#b0d5ce"
+          }
+        ]
+      },
+      {
+        "featureType": "road.highway",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+          {
+            "color": "#023e58"
+          }
+        ]
+      },
+      {
+        "featureType": "road.local",
+        "elementType": "labels",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "transit",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#98a5be"
+          }
+        ]
+      },
+      {
+        "featureType": "transit",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+          {
+            "color": "#1d2c4d"
+          }
+        ]
+      },
+      {
+        "featureType": "transit.line",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "color": "#283d6a"
+          }
+        ]
+      },
+      {
+        "featureType": "transit.station",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "color": "#3a4762"
+          }
+        ]
+      },
+      {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "color": "#0e1626"
+          }
+        ]
+      },
+      {
+        "featureType": "water",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#4e6d70"
+          }
+        ]
+      }
+    ]
   });
   // set up the style rules and events for google.maps.Data
   map.data.setStyle(styleFeature);
   map.data.addListener("mouseover", mouseInToRegion);
   map.data.addListener("mouseout", mouseOutOfRegion);
-  //document.getElementById("container2").addEventListener("mouseover", mouseInToRegion)
+  
 
   // wire up the button
   const selectBox = document.getElementById("census-variable");
@@ -50,6 +336,71 @@ function initMap() {
   });
   // state polygons only need to be loaded once, do them now
   loadMapShapes();
+
+
+  // Create the search box and link it to the UI element.
+  const input = document.getElementById("pac-input");
+  const searchBox = new google.maps.places.SearchBox(input);
+
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+  // Bias the SearchBox results towards current map's viewport.
+  map.addListener("bounds_changed", () => {
+    searchBox.setBounds(map.getBounds());
+  });
+
+  let markers = [];
+
+  // Listen for the event fired when the user selects a prediction and retrieve
+  // more details for that place.
+  searchBox.addListener("places_changed", () => {
+    const places = searchBox.getPlaces();
+
+    if (places.length == 0) {
+      return;
+    }
+
+    // Clear out the old markers.
+    markers.forEach((marker) => {
+      marker.setMap(null);
+    });
+    markers = [];
+
+    // For each place, get the icon, name and location.
+    const bounds = new google.maps.LatLngBounds();
+
+    places.forEach((place) => {
+      if (!place.geometry || !place.geometry.location) {
+        console.log("Returned place contains no geometry");
+        return;
+      }
+
+      const icon = {
+        url: place.icon,
+        size: new google.maps.Size(71, 71),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(17, 34),
+        scaledSize: new google.maps.Size(25, 25),
+      };
+
+      // Create a marker for each place.
+      markers.push(
+        new google.maps.Marker({
+          map,
+          icon,
+          title: place.name,
+          position: place.geometry.location,
+        })
+      );
+      if (place.geometry.viewport) {
+        // Only geocodes have viewport.
+        bounds.union(place.geometry.viewport);
+      } else {
+        bounds.extend(place.geometry.location);
+      }
+    });
+    map.fitBounds(bounds);
+  });
+
 }
 
 /** Loads the state boundary polygons from a GeoJSON source. */
@@ -84,7 +435,7 @@ function loadCensusData(variable) {
 
   xhr.open("GET", variable );
   xhr.onload = function () {
-    const censusData = JSON.parse(xhr.responseText);
+  const censusData = JSON.parse(xhr.responseText);
     //console.log(censusData);
     // censusData.shift(); // the first row contains column names
     // censusData.forEach((row) => {
@@ -111,6 +462,9 @@ function loadCensusData(variable) {
     //     state.setProperty("census_variable", censusVariable);
     //   }
     // });
+    let total_pos = 0
+    let total_neg = 0
+    let total_neu = 0
     for (const [key, value] of Object.entries(censusData)) {
       const censusVariable = value['positive_rate']*100;
       const pos = value["positive"];
@@ -118,6 +472,11 @@ function loadCensusData(variable) {
       const neu = value["neutural"];
       const name = value["name"]; 
       const stateId = key;
+      if (stateId == "TOTAL"){
+        total_pos = value["positive"]
+        total_neg = value["negative"]
+        total_neu = value["neutural"]
+      }
       console.log(key, value);
       if (censusVariable < censusMin) {
         censusMin = censusVariable;
@@ -134,7 +493,7 @@ function loadCensusData(variable) {
           state.setProperty("neutural", neu);
           state.setProperty("stateId", key);
           state.setProperty("name", name);
-            state.setProperty("census_variable", censusVariable);
+          state.setProperty("census_variable", censusVariable);
           }
 
     };
@@ -143,6 +502,8 @@ function loadCensusData(variable) {
       censusMin.toLocaleString();
     document.getElementById("census-max").textContent =
       censusMax.toLocaleString();
+    // render overall Bar
+    addAll(total_pos, total_neg, total_neu)
   };
 
   xhr.send();
@@ -246,7 +607,6 @@ function mouseOutOfRegion(e) {
 }
 
 window.initMap = initMap;
-index.js
 
 function addPie(pos, neg, neu) {
   var dom = document.getElementById("container2");
@@ -317,9 +677,25 @@ function addBar(pos, neg, neu) {
           axisLabel: {show: false}
       },
       color: function(params) {
-        //注意，如果颜色太少的话，后面颜色不会自动循环，最好多定义几个颜色
         //#ffdc60,#ee6666,#9fe080,#5470c6
-        var colorList = ['#0f9f59','#ed322ceb', '#f3e73af4'];
+        var colorList = [new echarts.graphic.LinearGradient(
+          0, 0, 0, 1,
+          [
+              {offset: 0, color: '#0f9f59'},
+              {offset: 1, color: '#0af91ef4'}
+          ]
+         ),new echarts.graphic.LinearGradient(
+          0, 0, 0, 1,
+          [   {offset: 0, color: '#f40d05f4'},
+              {offset: 1, color: '#ee740ff4'}
+          ]
+         ), new echarts.graphic.LinearGradient(
+          0, 0, 0, 1,
+          [
+              {offset: 0, color: '#f4c405f4'},
+              {offset: 1, color: '#e4f405f4'}
+          ]
+         )];
         return colorList[params.dataIndex]
         },
       series: [{
@@ -330,16 +706,128 @@ function addBar(pos, neg, neu) {
           symbol: 'path://M0,10 L10,10 C5.5,10 5.5,5 5,0 C4.5,5 4.5,10 0,10 z',
           itemStyle: {
               normal: {
-                  opacity: 0.7
+                  opacity: 0.8
               },
               emphasis: {
                   opacity: 1
               }
           },
           //"这里规定下data"
-          data: [pos,neg,neu]
+          data: [pos,neg,neu],
+          label:{
+            show:true,//是否显示
+            textStyle:{
+              fontSize:20
+            }
+        }
       }]
   };;
 
   myChart.setOption(option, true);
 };
+
+function addAll(pos, neg, neu) {
+  var dom = document.getElementById("container4");
+  var myChart = echarts.init(dom);
+  var app = {};
+  option = null;
+  // Generate data
+
+
+  // option
+  option = {
+      tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+              type: 'shadow'
+          }
+      },
+      legend: {
+          data: ['Great Melbourne'],
+          textStyle: {
+              color: '#ffffff',
+              fontSize:13
+          }
+          
+      },
+      xAxis: {
+          data: ['Positive', 'Negative', 'Neutral'],
+          axisLine: {
+              lineStyle: {
+                  color: '#fffff',
+                  fontSize:13
+              }
+              
+          }
+      },
+      yAxis: {
+          splitLine: {show: false},
+          axisLine: {
+              lineStyle: {
+                  color: '#ccc'
+              }
+          }
+      },
+      series: [{
+          type: 'line',
+          smooth: true,
+          showAllSymbol: true,
+          symbol: 'emptyCircle',
+          markPoint:{
+              data:[
+                  {
+                      type:"max",name:"最大值"                          
+                  },
+                  {
+                      type:"min",name:"最小值"
+                  },
+              ]
+          },
+          symbolSize: 15,
+          data: [pos,neg,neu]
+      }, {
+          name: 'Great Melbourne',
+          type: 'bar',
+          barWidth: 60,
+          itemStyle: {
+              normal: {
+                  barBorderRadius: 10,
+                  color: function(params) {
+                      //#ffdc60,#ee6666,#9fe080,#5470c6
+                      var colorList = [new echarts.graphic.LinearGradient(
+                          0, 0, 0, 1,
+                          [
+                              {offset: 0, color: '#0f9f59'},
+                              {offset: 1, color: '#0af91ef4'}
+                          ]
+                         ),new echarts.graphic.LinearGradient(
+                          0, 0, 0, 1,
+                          [   {offset: 0, color: '#f40d05f4'},
+                              {offset: 1, color: '#ee740ff4'}
+                          ]
+                         ), new echarts.graphic.LinearGradient(
+                          0, 0, 0, 1,
+                          [
+                              {offset: 0, color: '#f4c405f4'},
+                              {offset: 1, color: '#e4f405f4'}
+                          ]
+                         )];
+                      return colorList[params.dataIndex]
+
+                  }
+              }
+          },
+          data: [pos,neg,neu],
+          label:{
+              show:true,//是否显示
+              textStyle:{//图例文字的样式
+                color:'#fff',
+                fontSize:16
+            }
+          }
+      }
+  ]
+  };;
+
+  myChart.setOption(option, true);
+}
