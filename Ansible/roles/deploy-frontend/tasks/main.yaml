@@ -1,0 +1,5 @@
+- name: deploy frontend
+  shell:
+    docker-compose up -d
+  args:
+    chdir: '{{ deploy_dir }}'
