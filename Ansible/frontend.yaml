@@ -3,5 +3,4 @@
     - host_vars/frontend.yaml
   gather_facts: true
   roles:
-    - role: git-pull
     - role: deploy-frontend
