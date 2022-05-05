@@ -1,5 +1,5 @@
 FROM node:latest
-WORKDIR /Users/gray/Downloads/FrontEnd
+WORKDIR /home/ubuntu/CCC_Project2/FrontEnd
 COPY . .
 RUN npm i
 EXPOSE 3000
