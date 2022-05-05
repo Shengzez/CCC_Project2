@@ -4,6 +4,7 @@
 		<meta charset="UTF-8">
 		<title>Group 8 Data Visdualization</title>
 		<link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/mdb.min.css" />
 		<script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
     <style>
       h1{
@@ -17,285 +18,55 @@
 	</head>
 	<body>
     <img src="images/logo.png" style=" font-size:18px; position: absolute; left: -30px; top:-55px; "/> 
-		<header>
-			<img src="images/group.png" /> <font color = "#F0F8FF" >Statistical Result</font>
+		<header style = "height: 100%;">
+			<img src="images/group.png" /> 
 			<span id=localtime style=" font-size:18px; position: absolute; right: 30px; top:-20px; "></span>
+            
 		</header>
-    
 		<div id="content">
-      <span class="cans" style="opacity: .3">
-        <iframe frameborder="0" src="js/index.html" style="width: 100%; height: 100%"></iframe>
-      </span>
-			<div class="content_left">
-
+			<div class="content_left" style = "visibility: hidden;">
 				<div class="dtuplc">
-          <div class="title1"> 	<img src="images/twitter.png" /> &nbsp&nbspData Source</div>
+                    
 					<div class="dtu">
-						<div id="container" style="height: 100%;"></div>						
-					</div>
-					<div class="plc">
-						<div id="container1" style="height: 100%"></div>
-					</div>
 				</div>
         <div class="online">
-          <div class="title"><img src="images/pie-chart.png" /> Sentiment analysis pie</div>
-          <div class="online_con" id="container2"> </div>
         </div>
         <div class="industry">
-          <div class="title"><img src="images/bar-chart-2.png" /> Sentiment analysis bar</div>
-          <div class="industry_con" id="container3"></div>
-        </div>
-			</div>
-			<div class="content_center">
-			<div class="center_top" >
-          
-      <!-- Google map here -->
 
-      <div id="controls" class="nicebox">
-        <div id="distribution_map">
         </div>
-        <div id="legend">
-          <div id="census-min">min</div>
-          <div class="color-key"><span id="data-caret">&#x25c6;</span></div>
-          <div id="census-max">max</div>
+			</div>
         </div>
-      </div>
-      <!-- Google map end -->
-    <div id="data-box" class="nicebox">
-      <label id="data-label" for="data-value"></label>
-      <span id="data-value"></span>
-    </div>
-    <div id="map"></div>
-		</div>
-				<div class="center_bot" >
-					<table class="panel-table"bordercolor="#0d48e0" border="1">
-                        <thead bgcolor="#0e4ae0" align="center" >
-                        <tr height="40">
-                            <th colspan="6"><img src="images/icon04.png" /> Undecided</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr class="aaa" align="center">
-                        	<td v-for="item in factoryHeader" style="color: #00fcff; font-size: 18px; padding: 5px 0;">{{ item.categories }}</td>
-                        </tr>
-                        <tr v-for="y in factory.slice(0,6)" class="aaa" style="font-size: 16px;" align="center" >
-                            <td>{{ y.company }}</td>
-                            <td>{{ y.dtuCnt }}</td>
-                            <td>{{ y.plcCnt }}</td>
-                            <td>{{ y.dataCnt }}</td>
-                            <td>{{ y.alarm }}</td>
-                            <td width="250">
-                            	<button class="b1 click_pop">报警记录</button>
-                            	<button class="b2 click_pop2">历史数据</button>
-                            	<button class="b3 click_pop3">组态应用</button>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-				</div>
-			</div>
-			<div class="content_right">
-				<div class="report">
-					<div class="report1">
-						<p>Positive</p>
-						<small id="pos_report">0</small>
-					</div>
-					<div class="report2">
-						<p>Negative</p>
-						<small id="neg_report">0</small>
-					</div>
-                    <div class="report3">
-						<p>Neutral</p>
-						<small id="neu_report">0</small>
-					</div>
-				</div>
-				<div class="news_report">
-					<div class="title"><img src="images/crosshair.png" /> Choose Scenarios </div>
-                    <div class="news_list">
-                        <div class="select-box">
-                            <label for="census-variable" class="label select-box1"><span class="label-desc">Overall</span> </label>
-                            <select id = "census-variable" class="select">
-                              <option value = "http://172.26.128.133:5555/sentiment/overall">Overall</option>
-                              <option value = "http://172.26.128.133:5555/sentiment/housing">Housing</option>
-                            </select>
-                            
-                          </div>
-                    </div>
-        
-			</div>
-				<div class="data_box">
-					<div class="title"><img src="images/columns.png" /> Barchart</div>
-					<div class="data_con" id="container4">
+			<div class="content_center">
+            <div style="font-size: 100px; color: #ffffff; position: absolute; left:100px;">Welcome to TwiAU</div>
+            <div style="font-size: 30px; color: #ffffff; position: absolute; left:260px; top:200px">Analysis Tweets for the Great Melbourne</div>
+            <a href="twitter.html"><button type="button" class="btn btn-dark" 
+            style = "position: absolute; left:32%;top: 370px; width: 370px; height: 100px; font-size: 50px;">Get Start</button></a>
+            <a  style="position: absolute; left:45%; bottom: -550px; font-size: 15px;"
+                class="btn btn-light"
+                data-mdb-toggle="collapse"
+                href="#collapseExample"
+                role="button"
+                aria-expanded="false"
+                aria-controls="collapseExample"
+                >
+                About
+            </a>
+            <div class="collapse mt-3" id="collapseExample" style="position: absolute; left:24%; bottom: -650px;font-size: 20px;color: rgb(252, 252, 252);">
+                This web analysis the data from Twiiter heavester and Aurin database     
+                <br>Present data Visdualization to You.<br>
+                Work by COMP90024 PROJECT2 GROUP 08
             </div>
-					</div>
-				</div>
-			</div>
+        </div>
+			<div class="content_right">
+               
 		</div>
-		<!--遮罩层-->
-		<div class="bgPop"></div>
-		<!--弹出框-->
-		<div class="pop">
-		    <div class="pop-top">
-		        报警记录
-		        <span class="pop-close">Ｘ</span>
-		    </div>
-		    <div class="pop-content">
-		        <table class="panel-table" bordercolor="#deefff" border="1">
-                    <thead bgcolor="#971212" align="center" >
-                        <tr height="38">
-                            <th>字段</th>
-                            <th>字段</th>
-                            <th>字段</th>
-                            <th>字段</th>
-                            <th>字段</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <tr class="aaa" style="font-size: 16px;" align="center" >
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr class="aaa" style="font-size: 16px;" align="center" >
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr class="aaa" style="font-size: 16px;" align="center" >
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    
-                    <tr class="aaa" style="font-size: 16px;" align="center" >
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    </tbody>
-                </table>
-		    </div>
-		    <div class="pop-foot">
-		        <input type="button" value="确定" class="pop-cancel pop-close">
-		    </div>
-		</div>
-		<script>
-		    $(document).ready(function () {
-		        $('.pop-close').click(function () {
-		            $('.bgPop,.pop').hide();
-		        });
-		        $('.click_pop').click(function () {
-		            $('.bgPop,.pop').show();
-		        });
-		    })
-		
-		</script>
-		<!--遮罩层-->
-		<div class="bgPop2"></div>
-		<!--弹出框-->
-		<div class="pop2">
-		    <div class="pop-top">
-		        历史记录
-		        <span class="pop-close">Ｘ</span>
-		    </div>
-		    <div class="pop-content">
-		        <table class="panel-table" bordercolor="#deefff" border="1">
-                    <thead bgcolor="#10aaa5" align="center" >
-                        <tr height="38">
-                            <th>字段</th>
-                            <th>字段</th>
-                            <th>字段</th>
-                            <th>字段</th>
-                            <th>字段</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <tr class="aaa" style="font-size: 16px;" align="center" >
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr class="aaa" style="font-size: 16px;" align="center" >
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr class="aaa" style="font-size: 16px;" align="center" >
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    
-                    <tr class="aaa" style="font-size: 16px;" align="center" >
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    </tbody>
-                </table>
-		    </div>
-		    <div class="pop-foot">
-		        <input type="button" value="确定" class="pop-cancel pop-close">
-		    </div>
-		</div>
-		<script>
-		    $(document).ready(function () {
-		        $('.pop-close').click(function () {
-		            $('.bgPop2,.pop2').hide();
-		        });
-		        $('.click_pop2').click(function () {
-		            $('.bgPop2,.pop2').show();
-		        });
-		    })
-		
-		</script>
-		<!--遮罩层-->
-		<div class="bgPop3"></div>
-		<!--弹出框-->
-		<div class="pop3">
-		    <div class="pop-top">
-		        组态应用
-		        <span class="pop-close">Ｘ</span>
-		    </div>
-		    <div class="pop-content">
-		        组态应用
-		    </div>
-		    <div class="pop-foot">
-		        <input type="button" value="确定" class="pop-cancel pop-close">
-		    </div>
-		</div>
-		<script>
-		    $(document).ready(function () {
-		        $('.pop-close').click(function () {
-		            $('.bgPop3,.pop3').hide();
-		        });
-		        $('.click_pop3').click(function () {
-		            $('.bgPop3,.pop3').show();
-		        });
-		    })
-		
-		</script>
+    </div>
         <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbIGvQr9YZ35mPLYTth4c_r1ViLAGOhrU&callback=initMap&v=weekly"
         defer>   </script>
 		<script type="text/javascript" src="js/jquery.min.js"></script>	
-        <script type="text/javascript" src="js/googlemap.js"></script>	
+    <script type="text/javascript" src="js/mdb.min.js"></script>	
+    <script type="text/javascript" src="js/googlemap.js"></script>	
 		<script type="text/javascript" src="js/echarts.min.js"></script>
 		<script type="text/javascript" src="js/china.js"></script>
 		<script type="text/javascript" src="js/vue.min.js"></script>
@@ -303,11 +74,8 @@
 		<script type="text/javascript" src="js/times.js"></script>
 		<script type="text/javascript" src="js/DTU.js"></script>
 		<script type="text/javascript" src="js/PLC.js"></script>
-		<script type="text/javascript" src="js/online.js"></script>
-		<script type="text/javascript" src="js/industry.js"></script>
-		<script type="text/javascript" src="js/data.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript" src="js/base.js"></script>
-        <script type="text/javascript" src="js/dropdown.js"></script>
+    <script type="text/javascript" src="js/base.js"></script>
+    <script type="text/javascript" src="js/dropdown.js"></script>
 	</body>
 </html>
