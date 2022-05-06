@@ -8,7 +8,7 @@
 
 - ### create_couchdb.sh
 
-- ### clone.sh
+- ### git-clone.sh
 
 - ### git-pull.sh
 
