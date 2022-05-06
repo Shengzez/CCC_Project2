@@ -7,6 +7,6 @@ services:
   backend:
     build: ./Backend
     ports:
-      - 6000:5555
+      - 5000:5555
   harvest:
     build: ./TwitterStreamer

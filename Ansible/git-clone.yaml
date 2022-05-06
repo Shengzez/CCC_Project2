@@ -1,4 +1,4 @@
-- hosts: web-app
+- hosts: webapp
   vars_files:
     - host_vars/git.yaml
   gather_facts: true
