@@ -4,3 +4,9 @@ services:
     build: ./FrontEnd
     ports:
       - 3000:3000
+  backend:
+    build: ./Backend
+    ports:
+      - 6000:5555
+  harvest:
+    build: ./TwitterStreamer

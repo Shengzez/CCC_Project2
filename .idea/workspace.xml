@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="26077581-bfa0-4c51-9e8f-e049746b2ac4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ansible/inventory/hosts.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Ansible/inventory/hosts.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +44,7 @@
       <workItem from="1651672665511" duration="1081000" />
       <workItem from="1651754547265" duration="1726000" />
       <workItem from="1651758369147" duration="1757000" />
+      <workItem from="1651802683856" duration="2108000" />
     </task>
     <servers />
   </component>
