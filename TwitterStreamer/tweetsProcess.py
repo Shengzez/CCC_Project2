@@ -15,7 +15,7 @@ from shapely.geometry import Polygon
 from shapely.geometry import Point
 import json
 #nltk.download('vader_lexicon')
-data = json.load(open("TwitterStreamer/suburb-vic.geojson"))
+data = json.load(open("suburb-vic.geojson"))
 
 
 def preprocessing(tweet):
