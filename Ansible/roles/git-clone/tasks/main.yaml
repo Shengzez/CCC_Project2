@@ -1,0 +1,4 @@
+- name: git clone
+  shell:
+    sudo -s
+    git clone git@github.com:Shengzez/CCC_Project2.git

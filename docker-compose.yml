@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  frontend:
+    build: ./FrontEnd
+    ports:
+      - 3000:3000
+  backend:
+    build: ./Backend
+    ports:
+      - 5555:5555
+  harvest:
+    build: ./TwitterStreamer
