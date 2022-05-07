@@ -1,6 +1,6 @@
 - name: deploy webapp
   shell:
     sudo -s
-    docker-compose up -d
+    docker-compose up --build
   args:
     chdir: '{{ deploy_dir }}'
