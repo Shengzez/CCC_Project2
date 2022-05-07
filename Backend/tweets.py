@@ -2,7 +2,7 @@ from flask_restful import Api, Resource, reqparse
 from flask import Flask, jsonify
 from config import remote_server, DB_URI
 import requests
-
+import numpy as np
 
 class Tweets(Resource):
     def __init__(self):
@@ -23,7 +23,7 @@ class SentimentCount(Resource):
         res = {}
         r = requests.get(DB_URI + f"/processed_tweets/_design/sentiment/_view/{keyword}?reduce=true&group_level=2")
         r = r.json()
-
+        count = []
 
         for row in r['rows']:
             ky = row['key']
@@ -32,18 +32,37 @@ class SentimentCount(Resource):
             res[ky[0]][ky[1]] += row['value']
         
         res['TOTAL'] = {'positive': 0, 'negative':0, 'neutural':0}
-
+        max_tweet = 0
+        min_tweet = 10000000
         for key in res.keys():
-            if key == 'TOTAL': continue
+            if key == 'TOTAL' or key == 'Notfound': continue
             res[key]['positive_rate'] = res[key]['positive'] / (res[key]['positive'] + res[key]['negative'] + res[key]['neutural'])
+            res[key]['total'] = res[key]['positive'] + res[key]['negative'] + res[key]['neutural']
+            
+            if res[key]['total'] > max_tweet: max_tweet = res[key]['total']
+            if res[key]['total'] < min_tweet: min_tweet = res[key]['total']
+            
             res['TOTAL']['positive'] += res[key]['positive'] 
             res['TOTAL']['negative'] += res[key]['negative'] 
             res['TOTAL']['neutural'] += res[key]['neutural']
-                
+
+            count.append(res[key]['total'])
+        
+        Q1 = np.quantile(count,0.25, axis=0)
+        Q3 = np.quantile(count,0.75, axis=0)
+        iqr = 3*(Q3-Q1)
+        for key in res.keys():
+            if key == 'TOTAL' or key == 'Notfound': continue
+            res[key]['number_rate'] = min(1, (res[key]['total'] - min_tweet) / (iqr - min_tweet))
+        
+        res['TOTAL']['max_tweet_number'] = max_tweet
+        res['TOTAL']['min_tweet_number'] = min_tweet
+
         response = jsonify(res)
         response.headers.add('Access-Control-Allow-Origin', '*')
 
         return response
+
 
     '''
     USERS = [
