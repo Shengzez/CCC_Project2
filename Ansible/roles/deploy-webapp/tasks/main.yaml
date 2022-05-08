@@ -1,6 +1,12 @@
-- name: deploy webapp
-  shell:
-    sudo -s
-    docker-compose up --build
-  args:
-    chdir: '{{ deploy_dir }}'
+# - name: deploy webapp
+#   shell:
+#     sudo -s
+#     docker-compose up --build
+#   args:
+#     chdir: '{{ deploy_dir }}'
+
+- name: deploy Docker Compose stack
+  become: yes
+  docker_compose:
+    project_src: '{{ deploy_dir }}'
+    build: yes
