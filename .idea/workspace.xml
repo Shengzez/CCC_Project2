@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="155cd7f1-9681-4e27-839b-d60c5a21c2e5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ansible/deploy-webapp.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Ansible/deploy-webapp.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ansible/git-pull.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Ansible/git-pull.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TwitterStreamer/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/TwitterStreamer/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

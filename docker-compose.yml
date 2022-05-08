@@ -10,3 +10,5 @@ services:
       - 5555:5555
   harvest:
     build: ./TwitterStreamer
+  search:
+    build: ./TwitterSearch
