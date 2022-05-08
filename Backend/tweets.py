@@ -31,20 +31,20 @@ class SentimentCount(Resource):
                 res[ky[0]] = {'name': ky[0].capitalize(), 'positive': 0, 'negative':0, 'neutural':0}
             res[ky[0]][ky[1]] += row['value']
         
-        res['TOTAL'] = {'positive': 0, 'negative':0, 'neutural':0}
+        res['OVERALL'] = {'positive': 0, 'negative':0, 'neutural':0}
         max_tweet = 0
         min_tweet = 10000000
         for key in res.keys():
-            if key == 'TOTAL' or key == 'Notfound': continue
+            if key == 'OVERALL' or key == 'Notfound': continue
             res[key]['positive_rate'] = res[key]['positive'] / (res[key]['positive'] + res[key]['negative'] + res[key]['neutural'])
             res[key]['total'] = res[key]['positive'] + res[key]['negative'] + res[key]['neutural']
             
             if res[key]['total'] > max_tweet: max_tweet = res[key]['total']
             if res[key]['total'] < min_tweet: min_tweet = res[key]['total']
             
-            res['TOTAL']['positive'] += res[key]['positive'] 
-            res['TOTAL']['negative'] += res[key]['negative'] 
-            res['TOTAL']['neutural'] += res[key]['neutural']
+            res['OVERALL']['positive'] += res[key]['positive'] 
+            res['OVERALL']['negative'] += res[key]['negative'] 
+            res['OVERALL']['neutural'] += res[key]['neutural']
 
             count.append(res[key]['total'])
         
@@ -52,11 +52,13 @@ class SentimentCount(Resource):
         Q3 = np.quantile(count,0.75, axis=0)
         iqr = 3*(Q3-Q1)
         for key in res.keys():
-            if key == 'TOTAL' or key == 'Notfound': continue
+            if key == 'OVERALL' or key == 'Notfound': continue
             res[key]['number_rate'] = min(1, (res[key]['total'] - min_tweet) / (iqr - min_tweet))
         
-        res['TOTAL']['max_tweet_number'] = max_tweet
-        res['TOTAL']['min_tweet_number'] = min_tweet
+        res['OVERALL']['max_tweet_number'] = max_tweet
+        res['OVERALL']['min_tweet_number'] = min_tweet
+        res['OVERALL']['3iqr'] = iqr
+        res['OVERALL']['mean_tweet'] =  sum(count) / len(count)
 
         response = jsonify(res)
         response.headers.add('Access-Control-Allow-Origin', '*')
