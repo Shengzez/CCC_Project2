@@ -31,8 +31,7 @@ class AurinSeat(Resource):
             res[doc['suburb']] = doc['seat']
             count.append(doc['seat'])
         res['OVERALL'] = {'min': float(np.min(count)), 'max': float(np.max(count)), "mean": float(np.mean(count))}
-        print(res)
-   
+           
         response = jsonify(res)
         response.headers.add('Access-Control-Allow-Origin', '*')
         return response
