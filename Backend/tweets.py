@@ -36,7 +36,7 @@ class SentimentCount(Resource):
         min_tweet = 10000000
         for key in res.keys():
             if key == 'OVERALL' or key == 'Notfound': continue
-            res[key]['positive_rate'] = res[key]['positive'] / (res[key]['positive'] + res[key]['negative'] + res[key]['neutural'])
+            res[key]['positive_rate'] = (res[key]['positive'] + 0.5 * res[key]['neutural'])/ (res[key]['positive'] + res[key]['negative'] + res[key]['neutural'])
             res[key]['total'] = res[key]['positive'] + res[key]['negative'] + res[key]['neutural']
             
             if res[key]['total'] > max_tweet: max_tweet = res[key]['total']
