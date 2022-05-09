@@ -1,0 +1,13 @@
+requests
+tweepy
+argparse
+datetime
+nltk
+couchdb
+matplotlib
+numpy
+pandas
+textblob
+reverse_geocoder
+googlemaps
+shapely
