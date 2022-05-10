@@ -87,10 +87,14 @@ class SentimentAndRai(Resource):
     def get(self, keyword, year):
         self.db = remote_server['aurin_rai']
         res = {}
+        count = []
         for item in self.db.view('_all_docs', include_docs=True):
             doc = item.doc
             res[doc['suburb']] = {'name': doc['suburb'].capitalize(), 'positive': 0, 'negative':0, 'neutural':0}
             res[doc['suburb']]['rai'] = doc[str(year)]
+            count.append(doc[str(year)])
+
+        res['OVERALL'] = {'min': np.min(count), 'max': np.max(count), "mean": np.mean(count)}
 
         r = requests.get(DB_URI + f"/processed_tweets/_design/sentiment/_view/{keyword}?reduce=true&group_level=2")
         r = r.json()
@@ -102,7 +106,7 @@ class SentimentAndRai(Resource):
             res[ky[0]][ky[1]] += row['value']
         
         for key in res.keys():
-            if key == 'Notfound': continue
+            if key == 'Notfound' or key == 'OVERALL': continue
             if (res[key]['positive'] + res[key]['negative'] + res[key]['neutural']) != 0: 
                 res[key]['positive_rate'] = (res[key]['positive'] + 0.5 * res[key]['neutural'])/ (res[key]['positive'] + res[key]['negative'] + res[key]['neutural'])
             else:
