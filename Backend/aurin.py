@@ -5,7 +5,6 @@ import requests
 import numpy as np
 
 class AurinRai(Resource):
-
     def get(self, year):
         self.db = remote_server['aurin_rai']
         res = {}
@@ -21,7 +20,6 @@ class AurinRai(Resource):
         return response
 
 class AurinSeat(Resource):
-
     def get(self):
         self.db = remote_server['aurin_seat']
         res = {}

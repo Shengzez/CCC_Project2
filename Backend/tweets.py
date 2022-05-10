@@ -17,8 +17,6 @@ class Tweets(Resource):
         response.headers.add('Access-Control-Allow-Origin', '*')
         return response
 
-
-
 class Overall(Resource):
     def get(self):
         r = requests.get(DB_URI + f"/mel_tweets/_design/mel_all/_view/overall?reduce=true&group_level=1")
@@ -29,7 +27,6 @@ class Overall(Resource):
         response = jsonify(res)
         response.headers.add('Access-Control-Allow-Origin', '*')
         return response
-
 
 class SentimentCount(Resource):
     def get(self, keyword):
@@ -73,6 +70,45 @@ class SentimentCount(Resource):
         res['OVERALL']['3iqr'] = iqr
         res['OVERALL']['mean_tweet'] =  sum(count) / len(count)
 
+        overall_r = requests.get(DB_URI + f"/mel_tweets/_design/mel_all/_view/overall?reduce=true&group_level=1")
+        overall_r = overall_r.json()
+        overall_res = {}
+        for row in overall_r['rows']:
+            overall_res[row['key']] = row['value']
+        
+        res['ALLMELB'] = overall_res
+
+        response = jsonify(res)
+        response.headers.add('Access-Control-Allow-Origin', '*')
+
+        return response
+
+class SentimentAndRai(Resource):
+    def get(self, keyword, year):
+        self.db = remote_server['aurin_rai']
+        res = {}
+        for item in self.db.view('_all_docs', include_docs=True):
+            doc = item.doc
+            res[doc['suburb']] = {'name': doc['suburb'].capitalize(), 'positive': 0, 'negative':0, 'neutural':0}
+            res[doc['suburb']]['rai'] = doc[str(year)]
+
+        r = requests.get(DB_URI + f"/processed_tweets/_design/sentiment/_view/{keyword}?reduce=true&group_level=2")
+        r = r.json()
+
+        for row in r['rows']:
+            ky = row['key']
+            if ky[0] not in res.keys():
+                continue
+            res[ky[0]][ky[1]] += row['value']
+        
+        for key in res.keys():
+            if key == 'Notfound': continue
+            if (res[key]['positive'] + res[key]['negative'] + res[key]['neutural']) != 0: 
+                res[key]['positive_rate'] = (res[key]['positive'] + 0.5 * res[key]['neutural'])/ (res[key]['positive'] + res[key]['negative'] + res[key]['neutural'])
+            else:
+                res[key]['positive_rate'] = None
+
+        # print(res)
         response = jsonify(res)
         response.headers.add('Access-Control-Allow-Origin', '*')
 
