@@ -19,7 +19,7 @@
 	<body>
     <img src="images/logo.png" style=" font-size:18px; position: absolute; left: -30px; top:-55px; "/> 
 		<header>
-			<img src="images/group.png" /> <font color = "#F0F8FF" >Statistical Result</font>
+			<img src="images/group.png" /> <font color = "#F0F8FF" >Tweets Analysis</font>
 			<span id=localtime style=" font-size:18px; position: absolute; right: 30px; top:-20px; "></span>
 		</header>
     
@@ -32,7 +32,7 @@
 				<div class="dtuplc">
           <div class="title1"> 	<img src="images/twitter.png" /> &nbsp&nbspData Source</div>
 					<div class="dtu">
-						<a href="twitter.html"><div id="container" style="height: 100%;"></div>	</a>					
+						<a href="#"><div id="container" style="height: 100%;"></div>	</a>					
 					</div>
 					<div class="plc">
 						<a href="aurin.html"><div id="container1" style="height: 100%"></div></a>
@@ -43,7 +43,7 @@
           <div class="online_con" id="container2"> </div>
         </div>
         <div class="industry">
-          <div class="title"><img src="images/bar-chart-2.png" /> Subarea Analysis Bar</div>
+          <div class="title"><img src="images/bar-chart-2.png" /> Subarea Analysis Hill</div>
           <div class="industry_con" id="container3"></div>
         </div>
 			</div>
@@ -72,9 +72,18 @@
           class="controls"
           type="text"
           placeholder="Search Places" onclick="searchbarClicked()"/>
-        <div class="select-box">
-            <label for="census-variable" class="label select-box1"><span class="label-desc">Overall</span> </label>
+          <div class="select-box">
+            <label for = 'change_scen' class="label select-box1"><span class="label-desc">Select Analysis</span> </label>
+            <select id = "change_scen" class="select">
+              <option value = " ">Select Analysis</option>
+              <option value = "tweets_t">Tweets In Area</option>
+              <option value = "sentiment_a">Sentiment Analysis </option>
+            </select>
+          </div>
+        <div class="select-box" style="position: absolute; left: 330px">
+            <label for="census-variable" class="label select-box1"><span class="label-desc">Choose Scenario</span> </label>
             <select id = "census-variable" class="select">
+              <option value = "">Raw Map </option>
               <option value = "http://172.26.128.133:5555/sentiment/overall">Overall</option>
               <option value = "http://172.26.128.133:5555/sentiment/housing">Housing</option>
               <option value = "http://172.26.128.133:5555/sentiment/engagement">Engagement</option>
@@ -83,7 +92,7 @@
               <option value = "http://172.26.128.133:5555/sentiment/environment">Environment</option>
               <option value = "http://172.26.128.133:5555/sentiment/opportunity">Opportunity</option>
               <option value = "http://172.26.128.133:5555/sentiment/transportation">Transportation</option>
-              <option value ="">Raw Map </option>
+              
             </select>
           </div>
       <!-- Google map here -->
@@ -113,9 +122,9 @@
 					<div class="data_con" id="container4">
                     </div>
 				</div>
-                <div class="data_box">
+          <div class="data_box">
 					<div class="title"><img src="images/columns.png" /> Overall Analysis</div>
-					<div class="data_con" id="container4">
+					<div class="data_con" id="container5">
                     </div>
 				</div>
 				</div>
@@ -124,7 +133,7 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbIGvQr9YZ35mPLYTth4c_r1ViLAGOhrU&libraries=places&callback=initMap&v=weekly"
     defer>   </script>
 		<script type="text/javascript" src="js/jquery.min.js"></script>	
-      <script type="text/javascript" src="js/googlemap.js"></script>	
+   <script type="text/javascript" src="js/googlemap.js"></script>	
 		<script type="text/javascript" src="js/echarts.min.js"></script>
 		<script type="text/javascript" src="js/china.js"></script>
 		<script type="text/javascript" src="js/vue.min.js"></script>

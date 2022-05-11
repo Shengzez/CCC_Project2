@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Group 8 AURIN Visdualization</title>
+		<link rel="stylesheet" href="css/style.css" />
+		<script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+        <style>
+        h1{
+            font-size: 18px;
+            font-family: Arial,"Microsoft Yahei";  
+            font-weight: bold;
+            color:rgb(255, 255, 255);
+        }
+        </style>
+
+	</head>
+	<body>
+    <img src="images/logo.png" style=" font-size:18px; position: absolute; left: -30px; top:-55px; "/> 
+		<header>
+			<img src="images/group.png" /> <font color = "#F0F8FF" >Aurin Analysis</font>
+			<span id=localtime style=" font-size:18px; position: absolute; right: 30px; top:-20px; "></span>
+		</header>
+    
+		<div id="content">
+      <span class="cans" style="opacity: .3">
+        <iframe frameborder="0" src="js/index.html" style="width: 100%; height: 100%"></iframe>
+      </span>
+			<div class="content_left">
+
+				<div class="dtuplc">
+          <div class="title1"> 	<img src="images/twitter.png" /> &nbsp&nbspData Source</div>
+					<div class="dtu">
+						<a href="twitter.html"><div id="container" style="height: 100%;"></div>	</a>					
+					</div>
+					<div class="plc">
+						<a href="#"><div id="container1" style="height: 100%"></div></a>
+					</div>
+				</div>
+        <div class="industry">
+          <div class="title"><img src="images/bar-chart-2.png" /> Subarea Analysis Hill</div>
+          <div class="industry_con" id="container3"></div>
+        </div>
+        <div class="online" style = "visibility: hidden;">
+            <div class="title"><img src="images/pie-chart.png" /> Subarea Analysis Pie</div>
+            <div class="online_con" id="container2"> </div>
+          </div>
+			</div>
+			<div class="content_center">
+            <div style="position: absolute; font-size: 35px; left: 32%; top: -50px;"> Rental Affordability Index </div>
+			<div class="center_top" style="position: absolute; top: 0px">
+        <script type="text/javascript">
+          function searchbarClicked() {
+          document.getElementById('pac-input').value = '';
+          }
+        </script> 
+        <input
+          id="pac-input"
+          class="controls"
+          type="text"
+          placeholder="Search Places" onclick="searchbarClicked()"/>
+          <div class="select-box">
+            <label for = 'census-variable' class="label select-box1"><span class="label-desc">Select Year</span> </label>
+            <select id = "census-variable" class="select">
+              <option value = "">Select Year</option>
+              <option value = "http://172.26.128.133:5555/sentimentAndRai/housing/2017">2017</option>
+              <option value = "http://172.26.128.133:5555/sentimentAndRai/housing/2018">2018</option>
+              <option value = "http://172.26.128.133:5555/sentimentAndRai/housing/2019">2019</option>
+              <option value = "http://172.26.128.133:5555/sentimentAndRai/housing/2020">2020</option>
+              <option value = "http://172.26.128.133:5555/sentimentAndRai/housing/2021">2021</option>
+            </select>
+          </div>
+      <!-- Google map here -->
+
+      <div id="controls" class="nicebox1">
+        <div id="distribution_map">
+        </div>
+        <div id="legend">
+          <div id="census-min">min</div>
+          <div class="color-key"><span id="data-caret">&#x25c6;</span></div>
+          <div id="census-max">max</div>
+        </div>
+      </div>
+     
+    <div id="data-box" class="nicebox">
+      <label id="data-label" for="data-value"></label>
+      <span id="data-value"></span>
+    </div>
+    <div id="map"></div>
+	</div>
+    <!-- Google map end -->
+			
+        </div>
+			<div class="content_right">
+				<div class="data_box">
+					<div class="title"><img src="images/columns.png" />Introduction</div>
+                    <div style="position:absolute; width: 350px; top: 100px; left:15px; font-size:20px; padding: 10px;">A (RAI) rental affordability index  <br> A score between 80 and 100 represents unaffordable rent
+                    <br>A score between 100 and 120 represents moderately unaffordable rent
+                    <br>A score between 120 and 150 represents acceptable rent <br> A score greater than 150 represents affordable rents </div>
+				</div>
+                <div class="data_box">
+					<div class="title"><img src="images/columns.png" /> Scatterplot Analysis</div>
+					<div class="data_con" id="container4">
+                    </div>
+				</div>
+				</div>
+			</div>
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbIGvQr9YZ35mPLYTth4c_r1ViLAGOhrU&libraries=places&callback=initMap&v=weekly"
+    defer>   </script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>	
+    <script type="text/javascript" src="js/aurinmap.js"></script>	
+    <script type="text/javascript" src="js/echarts.min.js"></script>
+    <script type="text/javascript" src="js/china.js"></script>
+    <script type="text/javascript" src="js/vue.min.js"></script>
+    <script type="text/javascript" src="js/map.js"></script>
+    <script type="text/javascript" src="js/times.js"></script>
+    <script type="text/javascript" src="js/DTU.js"></script>
+    <script type="text/javascript" src="js/PLC.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/base.js"></script>
+    <script type="text/javascript" src="js/dropdown.js"></script>
+	</body>
+</html>
