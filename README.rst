@@ -1,7 +1,7 @@
 # CCC_Project2
 ===================
 
-|github|_ |readthedocs|_ |codecov|_ |python|_ |pypi|_ |style|_
+|python|_  |style|_
 
 
     
