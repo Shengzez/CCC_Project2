@@ -50,5 +50,9 @@ Links
 
 
 - [Twitter API Documentation](https://developer.twitter.com/en/docs/twitter-api)
-
-
+- [Tweepy](http://www.tweepy.org/)
+- [CouchDB](https://github.com/djc/couchdb-python/)
+- [Flask](https://flask-restful.readthedocs.io/en/latest/ )
+- [Ansible](https://docs.ansible.com/ansible/latest/index.html )
+- [Docker](https://docs.docker.com/)
+- [Youtube](https://Youtube.com)
