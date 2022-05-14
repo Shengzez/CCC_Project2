@@ -7,6 +7,15 @@ CCC Project2
 [![Code of Conduct](https://img.shields.io/badge/code%20of%20conduct-Ansible-silver.svg)](https://docs.ansible.com/ansible/latest/community/code_of_conduct.html)
 [![License](https://img.shields.io/npm/l/echarts?color=5470c6)](https://github.com/apache/echarts/blob/master/LICENSE) [![Latest npm release](https://img.shields.io/npm/v/echarts?color=91cc75)](https://www.npmjs.com/package/echarts)
 
+
+Group Members
+------------
+Shengze Zhu 955127
+Zihao Guo 931278 
+Yebin Ge 1212734
+Jiahui Luo 1282009
+Qichang Li 1215907
+
 Installation
 ------------
 
