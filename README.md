@@ -29,7 +29,7 @@ Use the follow command to run Tweet Searcher locally
     
 Python 3.7 - 3.10 are supported.  
 
-Front-End
+Front End
 ------------
 You can view the statistical results by visiting:
 
