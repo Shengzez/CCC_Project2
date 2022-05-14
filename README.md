@@ -4,7 +4,7 @@ CCC Project2
 [![Python Versions](https://img.shields.io/pypi/pyversions/tweepy?label=Python)](https://pypi.org/project/tweepy/)
 [![Twitter API v1.1](https://img.shields.io/endpoint?url=https%3A%2F%2Ftwbadges.glitch.me%2Fbadges%2Fstandard)](https://developer.twitter.com/en/docs/twitter-api/v1)
 [![Twitter API v2](https://img.shields.io/endpoint?url=https%3A%2F%2Ftwbadges.glitch.me%2Fbadges%2Fv2)](https://developer.twitter.com/en/docs/twitter-api)
-
+[![Code of Conduct](https://img.shields.io/badge/code%20of%20conduct-Ansible-silver.svg)](https://docs.ansible.com/ansible/latest/community/code_of_conduct.html)
 Installation
 ------------
 
@@ -39,7 +39,7 @@ Remember to use Unimelb VPN to grant access to our server
 
 Alternatively, install directly from the GitHub repository and run:
 
-    cd /CCC_Project2/FrontEnd
+    cd /file_path_to_github_package/FrontEnd
     npm i
     npm start
 
