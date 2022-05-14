@@ -13,11 +13,20 @@ Use the follow command to clone the project
 
     git clone https://github.com/Shengzez/CCC_Project2.git
 
-To use the `tweepy.asynchronous` subpackage, be sure to install with the
-`async` extra:
+Tweet Crawler
+------------
+Use the follow command to run Tweet Streamer locally
+:
 
-    pip install tweepy[async]
+    python3 TwitterStreamer/tweetStreamer.py -l [144, -38.4, 145.5, -37.5]
 
+Where [144, -38.4, 145.5, -37.5] is the specifed bouding box for harvesting
+
+Use the follow command to run Tweet Searcher locally
+:
+
+    python3 TwitterStreamer/tweetSearcher.py 
+    
 You can also use Git to clone the repository from GitHub to install the latest
 development version:
 
