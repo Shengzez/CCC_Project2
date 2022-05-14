@@ -3,23 +3,11 @@
 
 |github|_ |readthedocs|_ |codecov|_ |python|_ |pypi|_ |style|_
 
-.. |github| image:: https://github.com/LAMDA-NJU/Deep-Forest/workflows/DeepForest-CI/badge.svg
-.. _github: https://github.com/LAMDA-NJU/Deep-Forest/actions
 
-.. |readthedocs| image:: https://readthedocs.org/projects/deep-forest/badge/?version=latest
-.. _readthedocs: https://deep-forest.readthedocs.io
-
-.. |codecov| image:: https://codecov.io/gh/LAMDA-NJU/Deep-Forest/branch/master/graph/badge.svg?token=5BVXOT8RPO
-.. _codecov: https://codecov.io/gh/LAMDA-NJU/Deep-Forest
     
 .. |python| image:: https://img.shields.io/pypi/pyversions/deep-forest
 .. _python: https://pypi.org/project/deep-forest/
 
-.. |pypi| image:: https://img.shields.io/pypi/v/deep-forest?color=blue
-.. _pypi: https://pypi.org/project/deep-forest/
-
-.. |style| image:: https://img.shields.io/badge/code%20style-black-000000.svg
-.. _style: https://github.com/psf/black
 
 **DF21** is an implementation of `Deep Forest <https://arxiv.org/pdf/1702.08835.pdf>`__ 2021.2.1. It is designed to have the following advantages:
 
