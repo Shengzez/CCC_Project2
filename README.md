@@ -27,7 +27,7 @@ Use the follow command to run Tweet Searcher locally
 
     python3 TwitterStreamer/tweetSearcher.py 
     
-Python 3.6 - 3.10 are supported.  
+Python 3.7 - 3.10 are supported.  
 
 Front-End
 ------------
