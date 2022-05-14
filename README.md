@@ -11,9 +11,13 @@ CCC Project2
 Group Members
 ------------
 Shengze Zhu 955127
+
 Zihao Guo 931278 
+
 Yebin Ge 1212734
+
 Jiahui Luo 1282009
+
 Qichang Li 1215907
 
 Installation
