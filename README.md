@@ -35,7 +35,7 @@ You can view the statistical results by visiting:
 
  http://172.26.128.133:3000/
 
-Remember to use Unimelb VPN to grant access to our sever
+Remember to use Unimelb VPN to grant access to our server
 
 Alternatively, install directly from the GitHub repository and run:
 
