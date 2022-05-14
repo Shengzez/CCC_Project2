@@ -39,7 +39,7 @@ Remember to use Unimelb VPN to grant access to our server
 
 Alternatively, install directly from the GitHub repository and run:
 
-    cd /file_path_to_github_package/FrontEnd
+    cd /CCC_Project2/FrontEnd
     npm i
     npm start
 
