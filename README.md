@@ -20,25 +20,30 @@ Use the follow command to run Tweet Streamer locally
 
     python3 TwitterStreamer/tweetStreamer.py -l [144, -38.4, 145.5, -37.5]
 
-Where [144, -38.4, 145.5, -37.5] is the specifed bouding box for harvesting
+Where [144, -38.4, 145.5, -37.5] is the specifed bouding box for harvesting(south-west and north-east corner) 
 
 Use the follow command to run Tweet Searcher locally
 :
 
     python3 TwitterStreamer/tweetSearcher.py 
     
-You can also use Git to clone the repository from GitHub to install the latest
-development version:
+Python 3.6 - 3.10 are supported.  
 
-    git clone https://github.com/tweepy/tweepy.git
-    cd tweepy
-    pip install .
+Front-End
+------------
+You can view the statistical results by visiting:
 
-Alternatively, install directly from the GitHub repository:
+ http://172.26.128.133:3000/
 
-    pip install git+https://github.com/tweepy/tweepy.git
+Remember to use Unimelb VPN to grant access to our sever
 
-Python 3.6 - 3.10 are supported.
+Alternatively, install directly from the GitHub repository and run:
+
+    cd /file_path_to_github_package/FrontEnd
+    npm i
+    npm start
+
+To view the front end locally
 
 Links
 -----
