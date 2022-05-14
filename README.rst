@@ -1,7 +1,7 @@
 # CCC_Project2
 ===================
 
-|python|_  |style|_
+|python|_  
 
 
     
@@ -107,5 +107,5 @@ Thanks to all our contributors
 
 |contributors|
 
-.. |contributors| image:: https://contributors-img.web.app/image?repo=LAMDA-NJU/Deep-Forest
-.. _contributors: https://github.com/LAMDA-NJU/Deep-Forest/graphs/contributors
+.. |contributors| image:: https://contributors-img.web.app/image?repo=Shengzez/CCC_Project2
+.. _contributors: https://github.com/Shengzez/CCC_Project2/graphs/contributors
