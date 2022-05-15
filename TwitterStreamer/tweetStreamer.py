@@ -8,7 +8,7 @@ import time
 import tweetsProcess
 import nltk
 import couchdb as cd
-#nltk.download('vader_lexicon')
+# modified from https://github.com/HanxunH/COMP90024-2019S1-Team7-TrackerHub
 
 
 secure_remote_server = cd.Server('http://admin:admin@172.26.129.141:5984')
