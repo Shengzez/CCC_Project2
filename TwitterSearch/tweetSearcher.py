@@ -9,12 +9,11 @@ LIMIT = 1000
 secure_remote_server = cd.Server('http://admin:admin@172.26.129.141:5984')
 db = secure_remote_server['mel_tweets']
 
-consumer_key = 'XMmsyU6HRJ2PCXVulgjrM4WrX'
-consumer_secret = 'PEMlBYaGi9FKuCgRdodXHboeEAtGSQgajYm8leuN8P4hVb32jJ'
-access_token = '1512011770017513476-mTa2DmJ4VKTDT9T6LM4KoP4M5WEsnT'
-access_token_secret = 'W9BXmEmkZgn9BkHy3bNGvRG2tMojFeH4BId4OzMOsm56o'
-bearer_token = "AAAAAAAAAAAAAAAAAAAAAFAzbgEAAAAAMCUxS1K0R%2BOKJAa6phedvqubWxQ%3DVfHJMb9dpmG3dsvim0M0OFWXp0RgcWDUGRlq47pDtJqu8K8eiz"
-
+consumer_key = 
+consumer_secret = 
+access_token = 
+access_token_secret = 
+bearer_token = 
 
 
 # You can authenticate as your app with just your bearer token
